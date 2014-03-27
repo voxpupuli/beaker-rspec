@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'thin'
 
   # Run time dependencies
-  s.add_runtime_dependency 'beaker', '~> 1.8.2'
+  s.add_runtime_dependency 'beaker', '~> 1.9.1'
   s.add_runtime_dependency 'rspec', '~> 2.14'
   s.add_runtime_dependency 'serverspec', '~> 0.14'
   s.add_runtime_dependency 'specinfra', '~> 0.3'
