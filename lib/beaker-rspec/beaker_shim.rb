@@ -36,7 +36,7 @@ module BeakerRSpec
       @network_manager.validate
     end
 
-    # Run configuration steps to have hosts ready to test on (such as ensuring that 
+    # Run configuration steps to have hosts ready to test on (such as ensuring that
     # hosts are correctly time synched, adding keys, etc).
     # Assumes #setup, #provision and #validate have already been called.
     def configure
@@ -75,10 +75,22 @@ module BeakerRSpec
     # @option opts [String] :source The location on the test runners box where the files are found
     # @option opts [String] :module_name The name of the module to be copied over
     def puppet_module_install opts = {}
-      hosts.each do |host|
-        scp_to host, opts[:source], File.join(host['distmoduledir'], opts[:module_name])
-      end
+      puppet_module_install_on hosts, opts
     end
 
+    # Copy a puppet module from a given source to all hosts under test.
+    # Assumes each host under test has an associated 'distmoduledir' (set in the
+    # host configuration YAML file).
+    #
+    # @param host [Array[Host],Host] can take an array or single host object
+    #
+    # @param opts [Hash]
+    # @option opts [String] :source The location on the test runners box where the files are found
+    # @option opts [String] :module_name The name of the module to be copied over
+    def puppet_module_install_on(host, opts = {})
+      Array(host).each do |h|
+        scp_to h, opts[:source], File.join(h['distmoduledir'], opts[:module_name])
+      end
+    end
   end
 end
