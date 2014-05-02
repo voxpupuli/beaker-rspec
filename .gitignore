@@ -1,3 +1,7 @@
 Gemfile.lock
 .bundle
 *.swp
+
+.idea
+*.iml
+.vagrant

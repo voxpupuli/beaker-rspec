@@ -8,7 +8,7 @@ module BeakerRSpec
   # commands.
   module BeakerShim
     include Beaker::DSL
-
+    PUPPET_MODULE_INSTALL_IGNORE = ['.git', '.idea', '.vagrant', 'acceptance', 'spec', 'tests', 'log']
     # Accessor for logger
     # @return Beaker::Logger object
     def logger
@@ -74,6 +74,7 @@ module BeakerRSpec
     # @param opts [Hash]
     # @option opts [String] :source The location on the test runners box where the files are found
     # @option opts [String] :module_name The name of the module to be copied over
+    # @option opts [Array] :ignore_list A list of ignore files, we include all hidden files as well.
     def puppet_module_install opts = {}
       puppet_module_install_on hosts, opts
     end
@@ -87,9 +88,21 @@ module BeakerRSpec
     # @param opts [Hash]
     # @option opts [String] :source The location on the test runners box where the files are found
     # @option opts [String] :module_name The name of the module to be copied over
+    # @option opts [Array] :ignore_list A list of ignore files, we include all hidden files as well.
     def puppet_module_install_on(host, opts = {})
+      ignore_list = opts[:ignore_list] || PUPPET_MODULE_INSTALL_IGNORE
+      if !ignore_list.kind_of?(Array) || ignore_list.nil?
+        raise ArgumentError "Ignore list must be an Array"
+      end
+      ignore_list << '.' unless ignore_list.include? '.'
+      ignore_list << '..' unless ignore_list.include? '..'
       Array(host).each do |h|
-        scp_to h, opts[:source], File.join(h['distmoduledir'], opts[:module_name])
+
+        Dir.glob(opts[:source], File::FNM_DOTMATCH).each do |item|
+          #binding.pry
+          scp_to h, File.join(opts[:source], item), File.join(h['distmoduledir'], opts[:module_name], item) unless ignore_list.include? item
+
+        end
       end
     end
   end

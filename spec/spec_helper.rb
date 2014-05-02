@@ -1,3 +1,13 @@
-ENV['RS_SETFILE'] ||= 'sample.cfg'
+require 'rbconfig'
+ruby_conf = defined?(RbConfig) ? RbConfig::CONFIG : Config::CONFIG
 
-require "beaker-rspec"
+unless ruby_conf['MAJOR'].to_i == 1 && ruby_conf['MINOR'].to_i < 9
+  require 'simplecov'
+end
+
+require 'fakefs/spec_helpers'
+require 'rspec/mocks'
+
+RSpec.configure do |config|
+  config.include FakeFS::SpecHelpers
+end
