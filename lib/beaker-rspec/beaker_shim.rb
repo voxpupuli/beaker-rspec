@@ -76,6 +76,7 @@ module BeakerRSpec
     # @option opts [String] :module_name The name of the module to be copied over
     # @option opts [Array] :ignore_list A list of ignore files, we include all hidden files as well.
     def puppet_module_install opts = {}
+      opts[:ignore_list] ||= []
       puppet_module_install_on hosts, opts
     end
 
@@ -90,20 +91,25 @@ module BeakerRSpec
     # @option opts [String] :module_name The name of the module to be copied over
     # @option opts [Array] :ignore_list A list of ignore files, we include all hidden files as well.
     def puppet_module_install_on(host, opts = {})
+      ignore_list = build_ignore_list opts
+      Array(host).each do |h|
+        Dir.glob(opts[:source], File::FNM_DOTMATCH).each do |item|
+          if !ignore_list.include? item
+            scp_to h, File.join(opts[:source], item), File.join(h['distmoduledir'], opts[:module_name], item)
+          end
+        end
+      end
+    end
+
+    private
+    def build_ignore_list(opts = {})
       ignore_list = opts[:ignore_list] || PUPPET_MODULE_INSTALL_IGNORE
       if !ignore_list.kind_of?(Array) || ignore_list.nil?
         raise ArgumentError "Ignore list must be an Array"
       end
       ignore_list << '.' unless ignore_list.include? '.'
       ignore_list << '..' unless ignore_list.include? '..'
-      Array(host).each do |h|
 
-        Dir.glob(opts[:source], File::FNM_DOTMATCH).each do |item|
-          #binding.pry
-          scp_to h, File.join(opts[:source], item), File.join(h['distmoduledir'], opts[:module_name], item) unless ignore_list.include? item
-
-        end
-      end
     end
   end
 end

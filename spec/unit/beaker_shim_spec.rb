@@ -22,23 +22,29 @@ describe BeakerRSpec::BeakerShim do
     hosts
   end
 
-  describe "#puppet_module_install_on" do
+  shared_context "host_context" do
+    let(:hosts) { hosts_for_context ['/etc/puppetlabs/puppet/modules'] }
+  end
 
-    shared_context "puppet_module_context" do
-      let(:hosts) { hosts_for_context ['/etc/puppetlabs/puppet/modules'] }
+  def should_scp_stub(hosts, should_be_list, should_not_be_list)
+    Dir.stub(:glob).and_return(should_be_list.zip(should_not_be_list).flatten.select { |i| !i.nil? })
+
+    hosts.each do |host|
+      should_be_list.each do |item|
+        subject.should_receive(:scp_to).with(host, "./#{item}", "/etc/puppetlabs/puppet/modules/bogusMod/#{item}").once
+      end
+      should_not_be_list.each do |item|
+        subject.should_not_receive(:scp_to).with(host, "./#{item}", anything())
+      end
     end
+  end
 
+  describe "#puppet_module_install_on" do
     shared_examples "puppet_module_examples" do
-      include_context "puppet_module_context"
+      include_context "host_context"
       it {
-        Dir.stub(:glob).and_return(should_be_list.zip(should_not_be_list).flatten.select { |i| !i.nil? })
+        should_scp_stub(hosts, should_be_list, should_not_be_list)
         host = hosts[0]
-        should_be_list.each do |item|
-          subject.should_receive(:scp_to).with(host, "./#{item}", "/etc/puppetlabs/puppet/modules/bogusMod/#{item}").once
-        end
-        should_not_be_list.each do |item|
-          subject.should_not_receive(:scp_to).with(host, "./#{item}", anything())
-        end
         opts = { :source => './', :module_name => 'bogusMod', :ignore_list => ignore_list }
         subject.puppet_module_install_on(host, opts)
       }
@@ -58,13 +64,27 @@ describe BeakerRSpec::BeakerShim do
   end
 
   describe "#puppet_module_install" do
-    it {
-      hosts = hosts_for_context ['/etc/puppetlabs/puppet/modules']
-      subject.stub(:hosts).and_return(hosts)
-      opts = { :source => './', :module_name => 'bogusMod' }
-      subject.stub(:puppet_module_install_on).with(hosts, opts)
-      subject.puppet_module_install opts
-    }
+
+    describe "default behavior" do
+      include_context "host_context"
+      should_not_be_list =[".", ".."]
+      should_be_list = ['Modulefile', 'metadata.json', 'lib', 'files', 'templates', '.vagrant', '.git', 'acceptance', 'tests']
+      it {
+        subject.stub(:hosts).and_return(hosts)
+        should_scp_stub(hosts, should_be_list, should_not_be_list)
+        opts = { :source => './', :module_name => 'bogusMod' }
+        subject.puppet_module_install opts
+      }
+    end
+    describe "using_ignore_list" do
+      include_context "host_context"
+      it {
+        subject.stub(:hosts).and_return(hosts)
+        should_scp_stub(hosts, should_be_list, should_not_be_list)
+        opts = { :source => './', :module_name => 'bogusMod', :ignore_list => ['.git','.vagrant','tests','acceptance'] }
+        subject.puppet_module_install opts
+      }
+    end
   end
   describe "#hosts" do
     it {
