@@ -75,6 +75,7 @@ module BeakerRSpec
     # @option opts [String] :source The location on the test runners box where the files are found
     # @option opts [String] :module_name The name of the module to be copied over
     # @option opts [Array] :ignore_list A list of ignore files, we include all hidden files as well.
+    # @deprecated Use {#puppet_module_install_on} instead
     def puppet_module_install opts = {}
       opts[:ignore_list] ||= []
       puppet_module_install_on hosts, opts
