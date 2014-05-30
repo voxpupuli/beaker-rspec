@@ -102,6 +102,12 @@ module BeakerRSpec
     end
 
     private
+    # Build an array list of files/directories to ignore when pushing to remote host
+    # Automatically adds '..' and '.' to array.  If not opts of :ignore list is provided
+    # it will use the static variable PUPPET_MODULE_INSTALL_IGNORE
+    #
+    # @param opts [Hash]
+    # @option opts [Array] :ignore_list A list of files/directories to ignore
     def build_ignore_list(opts = {})
       ignore_list = opts[:ignore_list] || PUPPET_MODULE_INSTALL_IGNORE
       if !ignore_list.kind_of?(Array) || ignore_list.nil?
