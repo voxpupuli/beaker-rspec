@@ -2,7 +2,7 @@ require 'serverspec'
 require 'specinfra'
 require 'specinfra/backend/exec'
 
-module SpecInfra
+module Specinfra
   # Backend Module
   #
   # Contains the bridge between beaker-rspec and serverspec
@@ -10,7 +10,7 @@ module SpecInfra
     # Class BeakerExec
     #
     # Controls the running of Serverspec commands.
-    class BeakerExec < SpecInfra::Backend::Exec
+    class BeakerExec < Specinfra::Backend::Exec
       # Run a command using serverspec.  Defaults to running on the 'default' test node, otherwise uses the
       # node specified in @example.metadata[:node]
       # @param [String] cmd The serverspec command to executed
@@ -52,7 +52,7 @@ module SpecInfra
 end
 
 
-module SpecInfra
+module Specinfra
   # Helper Module
   #
   #
@@ -61,12 +61,12 @@ module SpecInfra
     #
     module BeakerBackend
       # @param commands_object [Object] The command object
-      # @return [SpecInfra::Backend::BeakerExec] Returns an instance of SpecInfra::Backend::BeakerExec
+      # @return [Specinfra::Backend::BeakerExec] Returns an instance of Specinfra::Backend::BeakerExec
       def backend(commands_object=nil)
         if ! respond_to?(:commands)
-          commands_object = SpecInfra::Commands::Base.new
+          commands_object = Specinfra::Commands::Base.new
         end
-        instance = SpecInfra::Backend::BeakerExec.instance
+        instance = Specinfra::Backend::BeakerExec.instance
         instance.set_commands(commands_object || commands)
         instance
       end
@@ -74,5 +74,4 @@ module SpecInfra
   end
 end
 
-include SpecInfra::Helper::BeakerBackend
-include SpecInfra::Helper::DetectOS
+include Specinfra::Helper::BeakerBackend
