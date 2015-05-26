@@ -15,6 +15,12 @@ module BeakerRSpec
       RSpec.configuration.logger
     end
 
+    # Accessor for metadata
+    # @return Hash metadata
+    def metadata
+      RSpec.configuration.metadata
+    end
+
     # Accessor for options hash
     # @return Hash options
     def options
