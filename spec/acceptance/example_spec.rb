@@ -17,6 +17,14 @@ describe "ignore" do
      logger.notify("hi, I'm a notify message")
   end
 
+  example "access the options" do
+    expect(options).to be_kind_of(Hash)
+  end
+
+  example "create a beaker dsl::step" do
+    step('testing that a step can be used')
+  end
+
   context "has serverspec support" do
     hosts.each do |node|
       sshd = case node['platform']
