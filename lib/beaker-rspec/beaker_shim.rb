@@ -68,6 +68,11 @@ module BeakerRSpec
       RSpec.configuration.hosts
     end
 
+    # Setter for hosts object
+    def hosts= v
+      RSpec.configuration.hosts = v
+    end
+
     # Accessor for default node
     # @return [Beaker::Host]
     def default_node

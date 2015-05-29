@@ -8,6 +8,10 @@ describe "ignore" do
     end
   end
 
+  example "use self.host" do
+    self.hosts = hosts
+  end
+
   example "access options hash" do
     install_pe
   end
