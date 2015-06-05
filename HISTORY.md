@@ -1,6 +1,7 @@
-# beaker-rspec - History
+# default - History
 ## Tags
-* [LATEST - 30 Mar, 2015 (7de55221)](#LATEST)
+* [LATEST - 5 Jun, 2015 (6ca92bf3)](#LATEST)
+* [beaker-rspec5.0.2 - 30 Mar, 2015 (b9831088)](#beaker-rspec5.0.2)
 * [beaker-rspec5.0.1 - 27 Jan, 2015 (7a64f285)](#beaker-rspec5.0.1)
 * [beaker-rspec5.0.0 - 8 Jan, 2015 (bbf806a4)](#beaker-rspec5.0.0)
 * [beaker-rspec4.0.0 - 5 Dec, 2014 (a4fe104a)](#beaker-rspec4.0.0)
@@ -18,7 +19,73 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 30 Mar, 2015 (7de55221)
+### <a name = "LATEST">LATEST - 5 Jun, 2015 (6ca92bf3)
+
+* (GEM) update beaker-rspec version to 5.1.0 (6ca92bf3)
+
+* Merge pull request #69 from anodelman/host-control (44ea85b5)
+
+
+```
+Merge pull request #69 from anodelman/host-control
+
+(BKR-280) ability to install pe/foss on subset of hosts
+```
+* (BKR-280) ability to install pe/foss on subset of hosts (612dd1ff)
+
+
+```
+(BKR-280) ability to install pe/foss on subset of hosts
+
+- provide a hosts setter so that we can alter the hosts during runtime
+```
+* Merge pull request #68 from anodelman/standardize (4f564531)
+
+
+```
+Merge pull request #68 from anodelman/standardize
+
+(BKR-286) set up beaker-rspec to use standard gem structure practices
+```
+* Merge pull request #67 from anodelman/add-beaker-globals (fe32bc1b)
+
+
+```
+Merge pull request #67 from anodelman/add-beaker-globals
+
+(BKR-283) beaker-rspec needs access to @metadata, broken with beaker 2.12.0
+```
+* (BKR-286) set up beaker-rspec to use standard gem structure practices (c62996be)
+
+
+```
+(BKR-286) set up beaker-rspec to use standard gem structure practices
+
+- this will allow us to use our standard release pipelines
+```
+* (BKR-283) beaker-rspec needs access to @metadata, broken with... (826455be)
+
+
+```
+(BKR-283) beaker-rspec needs access to @metadata, broken with...
+
+...beaker 2.12.0
+
+- add accessor for metadata
+```
+* (MAINT) be able to set used beaker using BEAKER_VERSION (a1b64039)
+
+### <a name = "beaker-rspec5.0.2">beaker-rspec5.0.2 - 30 Mar, 2015 (b9831088)
+
+* Merge pull request #62 from anodelman/master (b9831088)
+
+
+```
+Merge pull request #62 from anodelman/master
+
+create 5.0.2 gem
+```
+* (HISTORY) update beaker-rspec history for gem release 5.0.2 (6f6cfcbf)
 
 * (GEM) update beaker-rspec version to 5.0.2 (7de55221)
 
