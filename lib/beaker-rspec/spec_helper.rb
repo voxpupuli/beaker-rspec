@@ -23,6 +23,7 @@ RSpec.configure do |c|
   }
   #read env vars
   env_vars = {
+    :color       => ENV['BEAKER_color'] || ENV['RS_COLOR'],
     :nodeset     => ENV['BEAKER_set'] || ENV['RS_SET'],
     :nodesetfile => ENV['BEAKER_setfile'] || ENV['RS_SETFILE'],
     :provision   => ENV['BEAKER_provision'] || ENV['RS_PROVISION'],
@@ -38,9 +39,10 @@ RSpec.configure do |c|
   fresh_nodes = options[:provision] == 'no' ? '--no-provision' : nil
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
   debug = options[:debug] ? ['--log-level', 'debug'] : nil
+  color = options[:color] == 'no' ? ['--no-color'] : nil
 
   # Configure all nodes in nodeset
-  c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug].flatten.compact)
+  c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color].flatten.compact)
   c.provision
   c.validate
   c.configure
