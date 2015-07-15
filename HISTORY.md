@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 5 Jun, 2015 (6ca92bf3)](#LATEST)
+* [LATEST - 15 Jul, 2015 (25f27502)](#LATEST)
+* [5.1.0 - 5 Jun, 2015 (3a72d131)](#5.1.0)
 * [beaker-rspec5.0.2 - 30 Mar, 2015 (b9831088)](#beaker-rspec5.0.2)
 * [beaker-rspec5.0.1 - 27 Jan, 2015 (7a64f285)](#beaker-rspec5.0.1)
 * [beaker-rspec5.0.0 - 8 Jan, 2015 (bbf806a4)](#beaker-rspec5.0.0)
@@ -19,7 +20,31 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 5 Jun, 2015 (6ca92bf3)
+### <a name = "LATEST">LATEST - 15 Jul, 2015 (25f27502)
+
+* (GEM) update beaker-rspec version to 5.2.0 (25f27502)
+
+* Merge pull request #70 from cmurphy/colors (80f60a7c)
+
+
+```
+Merge pull request #70 from cmurphy/colors
+
+Add environment variable to expose --no-color
+```
+* Add environment variable to expose --no-color (d2f8ad39)
+
+
+```
+Add environment variable to expose --no-color
+
+When running CI on puppet modules with beaker-rspec, colors tend to get
+mistranslated into hard-to-read ascii strings that make reading logs
+painful. This patch adds the option to turn colors off.
+```
+### <a name = "5.1.0">5.1.0 - 5 Jun, 2015 (3a72d131)
+
+* (HISTORY) update beaker-rspec history for gem release 5.1.0 (3a72d131)
 
 * (GEM) update beaker-rspec version to 5.1.0 (6ca92bf3)
 
