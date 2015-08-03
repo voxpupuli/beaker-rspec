@@ -47,6 +47,11 @@ RSpec.configure do |c|
   c.validate
   c.configure
 
+  trap "SIGINT" do
+    c.cleanup
+    exit!(1)
+  end
+
   # Destroy nodes if no preserve hosts
   c.after :suite do
     case options[:destroy]
