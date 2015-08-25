@@ -32,7 +32,7 @@ describe "ignore" do
   context "has serverspec support" do
     hosts.each do |node|
       sshd = case node['platform']
-             when /windows|el-|redhat|centos|debian/
+             when /windows|el-|redhat|centos/
                'sshd'
              else
                'ssh'
