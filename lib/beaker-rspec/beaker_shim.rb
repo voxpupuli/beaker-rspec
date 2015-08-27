@@ -33,6 +33,7 @@ module BeakerRSpec
     def provision
       @network_manager = Beaker::NetworkManager.new(options, @logger)
       RSpec.configuration.hosts = @network_manager.provision
+      @network_manager.proxy_package_manager
     end
 
     # Validate that the SUTs are up and correctly configured.  Checks that required
@@ -42,7 +43,7 @@ module BeakerRSpec
       @network_manager.validate
     end
 
-    # Run configuration steps to have hosts ready to test on (such as ensuring that 
+    # Run configuration steps to have hosts ready to test on (such as ensuring that
     # hosts are correctly time synched, adding keys, etc).
     # Assumes #setup, #provision and #validate have already been called.
     def configure
