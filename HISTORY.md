@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 15 Jul, 2015 (25f27502)](#LATEST)
+* [LATEST - 27 Aug, 2015 (2cc63fcb)](#LATEST)
+* [5.2.0 - 15 Jul, 2015 (261dacdb)](#5.2.0)
 * [5.1.0 - 5 Jun, 2015 (3a72d131)](#5.1.0)
 * [beaker-rspec5.0.2 - 30 Mar, 2015 (b9831088)](#beaker-rspec5.0.2)
 * [beaker-rspec5.0.1 - 27 Jan, 2015 (7a64f285)](#beaker-rspec5.0.1)
@@ -20,7 +21,39 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 15 Jul, 2015 (25f27502)
+### <a name = "LATEST">LATEST - 27 Aug, 2015 (2cc63fcb)
+
+* (GEM) update beaker-rspec version to 5.2.1 (2cc63fcb)
+
+* Merge pull request #72 from anodelman/ruby2 (86157a9d)
+
+
+```
+Merge pull request #72 from anodelman/ruby2
+
+ (BKR-467) beaker-rspec does not correctly update os when cycling through hosts
+```
+* (BKR-467) beaker-rspec does not correctly update os when cycling... (a6b3e503)
+
+
+```
+(BKR-467) beaker-rspec does not correctly update os when cycling...
+
+...through hosts
+
+- found that beaker was unable to complete its acceptance tests when
+  provided with multiple SUTs of multiple os types in the same hosts
+  file
+- need to correctly detectos when we switch to a new os, otherwise we
+  assume that we are executing on the same os and generate the wrong
+  command strings
+- keeps a hash of known hosts associated with their os type so that we
+  don't have to run detect_os (which can be somewhat time expensive)
+  more than once per-SUT
+```
+### <a name = "5.2.0">5.2.0 - 15 Jul, 2015 (261dacdb)
+
+* (HISTORY) update beaker-rspec history for gem release 5.2.0 (261dacdb)
 
 * (GEM) update beaker-rspec version to 5.2.0 (25f27502)
 
