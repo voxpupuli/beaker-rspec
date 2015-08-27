@@ -61,6 +61,17 @@ module Specinfra
 end
 
 module Specinfra::Helper::Os
+
+  @@known_nodes = {}
+
+  def os
+    working_node_name = get_working_node.to_s
+    if !@@known_nodes[working_node_name] # haven't seen this yet, better detect the os
+      @@known_nodes[working_node_name] = property[:os] = detect_os
+    end
+    @@known_nodes[working_node_name]
+  end
+
   private
 
   # Override detect_os to look at the node platform, short circuit discoverability
@@ -265,7 +276,7 @@ module Specinfra::Backend
     def build_command(cmd)
       useshell = '/bin/sh'
       cmd = cmd.shelljoin if cmd.is_a?(Array)
-      cmd = "#{useshell.shellescape} -c #{cmd.shellescape}"
+      cmd = "#{String(useshell).shellescape} -c \"#{String(cmd)}\""
 
       path = Specinfra.configuration.path
       if path
