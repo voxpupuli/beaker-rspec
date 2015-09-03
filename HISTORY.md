@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 27 Aug, 2015 (2cc63fcb)](#LATEST)
+* [LATEST - 3 Sep, 2015 (462d5843)](#LATEST)
+* [5.2.1 - 27 Aug, 2015 (49c45f61)](#5.2.1)
 * [5.2.0 - 15 Jul, 2015 (261dacdb)](#5.2.0)
 * [5.1.0 - 5 Jun, 2015 (3a72d131)](#5.1.0)
 * [beaker-rspec5.0.2 - 30 Mar, 2015 (b9831088)](#beaker-rspec5.0.2)
@@ -21,7 +22,30 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 27 Aug, 2015 (2cc63fcb)
+### <a name = "LATEST">LATEST - 3 Sep, 2015 (462d5843)
+
+* (GEM) update beaker-rspec version to 5.2.2 (462d5843)
+
+* Merge pull request #75 from anodelman/fix-win (1b3ae6fe)
+
+
+```
+Merge pull request #75 from anodelman/fix-win
+
+(BKR-474) Missing shellescape in /helpers/serverspec.rb since a6b3e503
+```
+* (BKR-474) Missing shellescape in /helpers/serverspec.rb since a6b3e503 (0229c97a)
+
+
+```
+(BKR-474) Missing shellescape in /helpers/serverspec.rb since a6b3e503
+
+- put the shellescape back in
+- tested green locally on osx/windows/ubuntu/centos/debian
+```
+### <a name = "5.2.1">5.2.1 - 27 Aug, 2015 (49c45f61)
+
+* (HISTORY) update beaker-rspec history for gem release 5.2.1 (49c45f61)
 
 * (GEM) update beaker-rspec version to 5.2.1 (2cc63fcb)
 
