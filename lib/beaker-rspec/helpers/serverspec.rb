@@ -276,7 +276,7 @@ module Specinfra::Backend
     def build_command(cmd)
       useshell = '/bin/sh'
       cmd = cmd.shelljoin if cmd.is_a?(Array)
-      cmd = "#{String(useshell).shellescape} -c \"#{String(cmd)}\""
+      cmd = "#{String(useshell).shellescape} -c #{String(cmd).shellescape}"
 
       path = Specinfra.configuration.path
       if path
