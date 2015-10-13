@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 3 Sep, 2015 (462d5843)](#LATEST)
+* [LATEST - 13 Oct, 2015 (2ea88c14)](#LATEST)
+* [5.2.2 - 3 Sep, 2015 (69980e14)](#5.2.2)
 * [5.2.1 - 27 Aug, 2015 (49c45f61)](#5.2.1)
 * [5.2.0 - 15 Jul, 2015 (261dacdb)](#5.2.0)
 * [5.1.0 - 5 Jun, 2015 (3a72d131)](#5.1.0)
@@ -22,7 +23,60 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 3 Sep, 2015 (462d5843)
+### <a name = "LATEST">LATEST - 13 Oct, 2015 (2ea88c14)
+
+* (GEM) update beaker-rspec version to 5.3.0 (2ea88c14)
+
+* Merge pull request #73 from rooprob/feature/enable-beaker-proxy-support (aec28793)
+
+
+```
+Merge pull request #73 from rooprob/feature/enable-beaker-proxy-support
+
+Enable the proxy feature available in beaker cli.
+```
+* Enable the proxy feature available in beaker cli. (1eeda73f)
+
+
+```
+Enable the proxy feature available in beaker cli.
+
+Improves acceptance testing performance and lowers network traffic to package
+respositories with beaker-rspec.
+
+Running a suitably configured proxy cache to act as a package cache, add the
+following nodeset configuration.
+
+
+
+---
+CONFIG:
+  package_proxy: http://<proxy_addr>:<proxy_port>
+
+
+
+Beaker supports Debian (APT) and RHEL/Centos (RPM) based package proxies out of the box. See beaker --help (package-proxy) for further details.
+
+Example, Squid is a suitable local package cache,
+
+squid.conf
+
+
+mum_object_size 100 MB
+cache_replacement_policy heap LFUDA
+refresh_pattern ^ftp:          1440    20%     10080
+refresh_pattern ^gopher:       1440    0%      1440
+refresh_pattern Packages\.bz2$ 0       20%     4320 refresh-ims
+refresh_pattern Sources\.bz2$  0       20%     4320 refresh-ims
+refresh_pattern Release\.gpg$  0       20%     4320 refresh-ims
+refresh_pattern Release$       0       20%     4320 refresh-ims
+refresh_pattern .              0       20%     4320
+
+
+```
+### <a name = "5.2.2">5.2.2 - 3 Sep, 2015 (69980e14)
+
+* (HISTORY) update beaker-rspec history for gem release 5.2.2 (69980e14)
 
 * (GEM) update beaker-rspec version to 5.2.2 (462d5843)
 
