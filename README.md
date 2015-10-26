@@ -1,7 +1,7 @@
 beaker-rspec
 ============
 
-Bridge between puppet test harness (beaker)[https://github.com/puppetlabs/beaker] and (rspec)[https://github.com/rspec/rspec].
+Bridge between puppet acceptance test harness ([beaker](https://github.com/puppetlabs/beaker)) and [rspec](https://github.com/rspec/rspec).
 
 
 Runtime
