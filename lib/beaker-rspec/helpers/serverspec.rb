@@ -235,10 +235,20 @@ module Specinfra::Backend
     def run_command(cmd, opt = {})
       node = get_working_node
       script = create_script(cmd)
-      on node, "rm -f script.ps1"
+      #when node is not cygwin rm -rf will fail so lets use native del instead
+      #There should be a better way to do this, but for now , this works
+      if node.is_cygwin?
+        delete_command = "rm -rf"
+        redirection = "< /dev/null"
+      else
+        delete_command = "del"
+        redirection = "< NUL"
+      end
+      on node, "#{delete_command} script.ps1"
       create_remote_file(node, 'script.ps1', script)
-      # cygwin support /dev/null, if running from winrm would use < NULL
-      ret = ssh_exec!(node, "powershell.exe -File script.ps1 < /dev/null")
+      #When using cmd on a pswindows node redirection should be set to < NUl
+      #when using a cygwing one, /dev/null should be fine
+      ret = ssh_exec!(node, "powershell.exe -File script.ps1 #{redirection}")
 
       if @example
         @example.metadata[:command] = script
