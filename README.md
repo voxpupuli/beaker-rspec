@@ -107,7 +107,7 @@ Update spec_helper_acceptance.rb to reflect the module under test.  You will nee
 
 ##Create spec tests for your module
 
-Spec tests are written in [RSpec](http://rspec.info). You can also use [serverspec](http://serverspec.org/) to
+Spec tests are written in [RSpec](http://rspec.info). You can also use [serverspec](http://serverspec.org/) matchers to test [resources](http://serverspec.org/resource_types.html).
 
 Example spec file `spec/acceptance/mysql_account_delete_spec.rb`:
 
