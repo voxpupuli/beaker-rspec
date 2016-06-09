@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 13 Oct, 2015 (2ea88c14)](#LATEST)
+* [LATEST - 9 Jun, 2016 (a25f1e77)](#LATEST)
+* [5.3.0 - 13 Oct, 2015 (2efeb932)](#5.3.0)
 * [5.2.2 - 3 Sep, 2015 (69980e14)](#5.2.2)
 * [5.2.1 - 27 Aug, 2015 (49c45f61)](#5.2.1)
 * [5.2.0 - 15 Jul, 2015 (261dacdb)](#5.2.0)
@@ -23,7 +24,67 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 13 Oct, 2015 (2ea88c14)
+### <a name = "LATEST">LATEST - 9 Jun, 2016 (a25f1e77)
+
+* (GEM) update beaker-rspec version to 5.4.0 (a25f1e77)
+
+* Merge pull request #79 from richburroughs/master (4db37886)
+
+
+```
+Merge pull request #79 from richburroughs/master
+
+fixed an incomplete sentence in README.md
+```
+* fixed an incomplete sentence in README.md (cfd9cbd6)
+
+* Merge pull request #77 from oskar-flores/fix-serverspec-on-non-cygwin-node (a617f7bb)
+
+
+```
+Merge pull request #77 from oskar-flores/fix-serverspec-on-non-cygwin-node
+
+Add a check on windows part, to exec commands on a non cygwin environment
+```
+* Merge pull request #78 from DavidS/bkr-577-update-readme (563ba7e7)
+
+
+```
+Merge pull request #78 from DavidS/bkr-577-update-readme
+
+(BKR-577) Update README to describe usage in detail
+```
+* (BKR-577) Update README to describe usage in detail (18b307a7)
+
+* Cleaning code as per @DavidS sugestion (c0142b57)
+
+* Add a check on windows part, to exec commads on a non cywing environment (f483b063)
+
+* fixed up recent README changes (2771b4b1)
+
+* Merge pull request #71 from electrical/cleanup_ctrl_c (756de678)
+
+
+```
+Merge pull request #71 from electrical/cleanup_ctrl_c
+
+(BKR-345) Cleanup and quit on ctrl-c
+```
+* Merge pull request #76 from DavidS/document-env (b3d4f839)
+
+
+```
+Merge pull request #76 from DavidS/document-env
+
+Document environment variables
+```
+* Document environment variables (5ab74188)
+
+* (BKR-345) Cleanup and quit on ctrl-c (90a74317)
+
+### <a name = "5.3.0">5.3.0 - 13 Oct, 2015 (2efeb932)
+
+* (HISTORY) update beaker-rspec history for gem release 5.3.0 (2efeb932)
 
 * (GEM) update beaker-rspec version to 5.3.0 (2ea88c14)
 
