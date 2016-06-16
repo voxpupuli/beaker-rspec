@@ -63,7 +63,7 @@ Nodes are pulled from [Puppet Labs Vagrant Boxes](https://vagrantcloud.com/puppe
 
 Example node files can be found here:
 
-* [Puppet Labs example Vagrant node files](https://github.com/puppetlabs/beaker/blob/master/docs/Example-Vagrant-Hosts-Files.md)
+* [Puppet Labs example Vagrant node files](https://github.com/puppetlabs/beaker/blob/master/docs/hypervisors/vagrant_hosts_file_examples.md)
 
 Create the nodesets directory.  From module's top level directory:
 
