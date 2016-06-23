@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 9 Jun, 2016 (a25f1e77)](#LATEST)
+* [LATEST - 23 Jun, 2016 (2d2f126e)](#LATEST)
+* [5.4.0 - 9 Jun, 2016 (f030a8b5)](#5.4.0)
 * [5.3.0 - 13 Oct, 2015 (2efeb932)](#5.3.0)
 * [5.2.2 - 3 Sep, 2015 (69980e14)](#5.2.2)
 * [5.2.1 - 27 Aug, 2015 (49c45f61)](#5.2.1)
@@ -24,7 +25,65 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 9 Jun, 2016 (a25f1e77)
+### <a name = "LATEST">LATEST - 23 Jun, 2016 (2d2f126e)
+
+* (GEM) update beaker-rspec version to 5.5.0 (2d2f126e)
+
+* Merge pull request #82 from kevpl/maint_specinfra_gem_issue (ab82b011)
+
+
+```
+Merge pull request #82 from kevpl/maint_specinfra_gem_issue
+
+(MAINT) pinning specinfra to pass testing
+```
+* Merge pull request #80 from Ajedi32/patch-1 (9ab0b19f)
+
+
+```
+Merge pull request #80 from Ajedi32/patch-1
+
+Fix broken link to Vagrant node examples in README
+```
+* Merge pull request #81 from Ajedi32/patch-2 (04a9ae52)
+
+
+```
+Merge pull request #81 from Ajedi32/patch-2
+
+Fix example spec file in README
+```
+* (MAINT) pinning specinfra to pass testing (d1f49991)
+
+
+```
+(MAINT) pinning specinfra to pass testing
+
+Specinfra's newer versions (>=2.59.1) inspect classes and use
+their name method. Hocon shadows the class.name method, and
+breaks as such. There's a separate issue to fix the hocon
+problem (https://github.com/puppetlabs/ruby-hocon/issues/75).
+specinfra has decided to not use the name method either
+(https://github.com/mizzy/specinfra/pull/561).
+Once that's merged & released, this should be reverted.
+```
+* Fix example spec file in README (3af2c1a0)
+
+
+```
+Fix example spec file in README
+
+While following this example, I needed this change to get the tests to pass.
+
+[The documentation for beaker](http://www.rubydoc.info/github/puppetlabs/beaker/Beaker%2FDSL%2FHelpers%2FPuppetHelpers%3Aapply_manifest_on) explains why:
+
+> `:catch_failures` (Boolean) — default: `false` — By default `puppet -apply` will exit with 0, which does not count as a test failure, even if there were errors or changes when applying the manifest. This option enables detailed exit codes and causes a test failure if `puppet -apply` indicates there was a failure during its execution.
+```
+* Fix broken link to Vagrant node examples in README (d53be837)
+
+### <a name = "5.4.0">5.4.0 - 9 Jun, 2016 (f030a8b5)
+
+* (HISTORY) update beaker-rspec history for gem release 5.4.0 (f030a8b5)
 
 * (GEM) update beaker-rspec version to 5.4.0 (a25f1e77)
 
