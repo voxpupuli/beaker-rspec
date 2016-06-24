@@ -1,5 +1,5 @@
 module BeakerRSpec
   module Version
-    STRING = '5.5.0'
+    STRING = '5.6.0'
   end
 end
