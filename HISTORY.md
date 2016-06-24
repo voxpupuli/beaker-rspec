@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 23 Jun, 2016 (2d2f126e)](#LATEST)
+* [LATEST - 24 Jun, 2016 (b11dfe76)](#LATEST)
+* [5.5.0 - 23 Jun, 2016 (a289ce27)](#5.5.0)
 * [5.4.0 - 9 Jun, 2016 (f030a8b5)](#5.4.0)
 * [5.3.0 - 13 Oct, 2015 (2efeb932)](#5.3.0)
 * [5.2.2 - 3 Sep, 2015 (69980e14)](#5.2.2)
@@ -25,7 +26,23 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 23 Jun, 2016 (2d2f126e)
+### <a name = "LATEST">LATEST - 24 Jun, 2016 (b11dfe76)
+
+* (GEM) update beaker-rspec version to 5.6.0 (b11dfe76)
+
+* Merge pull request #83 from puppetlabs/revert-82-maint_specinfra_gem_issue (b7404799)
+
+
+```
+Merge pull request #83 from puppetlabs/revert-82-maint_specinfra_gem_issue
+
+Revert "(MAINT) pinning specinfra to pass testing"
+```
+* Revert "(MAINT) pinning specinfra to pass testing" (5ecdc52c)
+
+### <a name = "5.5.0">5.5.0 - 23 Jun, 2016 (a289ce27)
+
+* (HISTORY) update beaker-rspec history for gem release 5.5.0 (a289ce27)
 
 * (GEM) update beaker-rspec version to 5.5.0 (2d2f126e)
 
