@@ -37,5 +37,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'beaker', '~> 2.0'
   s.add_runtime_dependency 'rspec'
   s.add_runtime_dependency 'serverspec', '~> 2'
-  s.add_runtime_dependency 'specinfra', '= 2.59.0'
+  s.add_runtime_dependency 'specinfra', '~> 2'
 end
