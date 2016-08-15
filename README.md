@@ -30,7 +30,7 @@ Beaker does setup and provision all nodes from your nodeset on each test run, an
 * `BEAKER_set`: set to the name of the node file to be used during testing (exclude .yml file extension, it will be added by beaker-rspec). The file is assumed to be in module's spec/acceptance/nodesets directory.
 * `BEAKER_setfile` - set to the full path to a node file be used during testing (be sure to include full path and file extensions, beaker-rspec will use this path without editing/altering it in any way)
 
-For details on the specific mappings, the [setup code](https://github.com/puppetlabs/beaker-rspec/blob/2771b4b1864692690254a969680a57ff22ac0516/lib/beaker-rspec/spec_helper.rb#L26-L32) and the [beaker docs](https://github.com/puppetlabs/beaker/wiki/The-Command-Line).
+For details on the specific mappings, the [setup code](https://github.com/puppetlabs/beaker-rspec/blob/2771b4b1864692690254a969680a57ff22ac0516/lib/beaker-rspec/spec_helper.rb#L26-L32) and the [beaker docs](https://github.com/puppetlabs/beaker/blob/master/docs/tutorials/the_command_line.md).
 
 #Building your Module Testing Environment
 
@@ -63,7 +63,7 @@ Nodes are pulled from [Puppet Labs Vagrant Boxes](https://vagrantcloud.com/puppe
 
 Example node files can be found here:
 
-* [Puppet Labs example Vagrant node files](https://github.com/puppetlabs/beaker/blob/master/docs/hypervisors/vagrant_hosts_file_examples.md)
+* [Puppet Labs example Vagrant node files](https://github.com/puppetlabs/beaker/blob/master/docs/how_to/hypervisors/vagrant_hosts_file_examples.md)
 
 Create the nodesets directory.  From module's top level directory:
 
