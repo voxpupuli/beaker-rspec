@@ -2,6 +2,17 @@
 
 beaker-rspec is a bridge between the puppet acceptance test harness ([beaker](https://github.com/puppetlabs/beaker)) and [rspec](https://github.com/rspec/rspec). It also integrates [serverspec](http://serverspec.org/).
 
+#Upgrading from beaker-rspec 5 to 6
+
+In beaker-rspec 6, we've picked up the newest beaker, 3.y. In this release, we've
+given up support for Ruby 1.9 and moved to 2.2.5 as our lowest tested version,
+as well as a number of other changes underneath.
+
+To learn more about those changes, please checkout our
+[how-to upgrade](https://github.com/puppetlabs/beaker/blob/master/docs/how_to/upgrade_from_2_to_3.md)
+doc. Note that besides the Ruby version & beaker dependency change, nothing else
+was changed in beaker-rspec itself.
+
 #Typical Workflow
 
 Beaker does setup and provision all nodes from your nodeset on each test run, and cleans up the VMs after use. During development on a module it can be very handy to keep the VMs available for inspection or reuse. Set `BEAKER_destroy=no` do skip the cleanup and `BEAKER_provision=no` once the VMs are created.
