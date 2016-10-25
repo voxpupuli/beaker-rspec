@@ -92,7 +92,9 @@ require 'pry'
 
 # Install Puppet on all hosts
 hosts.each do |host|
-  on host, install_puppet
+  # Select the correct method below.
+  on host, install_puppet  # this is for Puppet 3
+  install_puppet_agent_on(host, :version => '1.5.2') # this is for Puppet 4
 end
 
 RSpec.configure do |c|
@@ -115,6 +117,7 @@ end
 ```
 
 Update spec_helper_acceptance.rb to reflect the module under test.  You will need to set the correct module name and add any module dependencies.  Place the file in the `spec` directory (in this case `puppetlabs-mysql/spec`)
+NOTE the different methods for installing the agent for Puppet 3 and Puppet 4.
 
 ##Create spec tests for your module
 
