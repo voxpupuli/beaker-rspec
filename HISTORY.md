@@ -1,6 +1,7 @@
 # default - History
 ## Tags
-* [LATEST - 24 Jun, 2016 (b11dfe76)](#LATEST)
+* [LATEST - 24 Oct, 2016 (b02c1c50)](#LATEST)
+* [5.6.0 - 24 Jun, 2016 (bc70fe5a)](#5.6.0)
 * [5.5.0 - 23 Jun, 2016 (a289ce27)](#5.5.0)
 * [5.4.0 - 9 Jun, 2016 (f030a8b5)](#5.4.0)
 * [5.3.0 - 13 Oct, 2015 (2efeb932)](#5.3.0)
@@ -26,7 +27,39 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 24 Jun, 2016 (b11dfe76)
+### <a name = "LATEST">LATEST - 24 Oct, 2016 (b02c1c50)
+
+* (GEM) update beaker-rspec version to 6.0.0 (b02c1c50)
+
+* Merge pull request #87 from kevpl/bkr946_beaker3 (6dc15bb5)
+
+
+```
+Merge pull request #87 from kevpl/bkr946_beaker3
+
+(BKR-946) update beaker dependency & docs
+```
+* (BKR-946) update beaker dependency & docs (401a62ac)
+
+* (MAINT) Fix broken links to Beaker docs in README (#84) (1ffe6cff)
+
+
+```
+(MAINT) Fix broken links to Beaker docs in README (#84)
+
+* Fix broken link to Vagrant node examples in README
+
+Beaker recently reorganized the directory structure of their docs, which broke this link.
+
+See: https://github.com/puppetlabs/beaker/commit/f3e01b0c3ef1ab02776b0f0a5f76d3a848e5d279
+
+* Fix broken link to beaker command line docs
+
+The old link goes to an empty wiki page, this fixes the link to point to the new page.
+```
+### <a name = "5.6.0">5.6.0 - 24 Jun, 2016 (bc70fe5a)
+
+* (HISTORY) update beaker-rspec history for gem release 5.6.0 (bc70fe5a)
 
 * (GEM) update beaker-rspec version to 5.6.0 (b11dfe76)
 
