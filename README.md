@@ -119,6 +119,18 @@ RSpec.configure do |c|
 end
 ```
 
+**NOTE** that the `install_puppet_on` method used above will install the latest
+Puppet 3.x version. If you'd like to install a more modern version, you can
+replace that line with this one:
+
+```ruby
+install_puppet_agent_on(hosts, options)
+```
+
+This method will install the latest puppet-agent from the specified
+[puppet collection](https://docs.puppet.com/puppet/latest/reference/puppet_collections.html)
+(defaults to `pc1`).
+
 Update spec_helper_acceptance.rb to reflect the module under test.  You will need to set the correct module name and add any module dependencies.  Place the file in the `spec` directory (in this case `puppetlabs-mysql/spec`)
 
 ##Create spec tests for your module
