@@ -54,7 +54,8 @@ Using puppetlabs-mysql as an example module.
 
 ##Install beaker-rspec
 
-In module's top level directory edit the Gemfile. If there is a `:system_tests` or `:acceptance` group, add it there.
+In module's top level directory edit the Gemfile. You should see a `:system_tests`
+or `:acceptance` group there, but if not, add beaker-rspec there:
 
 ```ruby
 group :acceptance do
@@ -84,16 +85,20 @@ Copy any nodesets that you wish to use into the nodesets directory.
 
 ##Create the spec_helper_acceptance.rb
 
-Create example file `spec_helper_acceptance.rb`:
+In the `spec` folder, you should see the project's `spec_helper_acceptance.rb`.
+This file contains all of the setup logic needed to get your Systems Under Test
+(SUTs) ready for testing. Note that puppetlabs-mysql's `spec_helper_acceptance.rb`
+file can be a little intimidating, so we're going to leave getting familiar with
+that to a later exercise. For now, create your own helper in the same directory.
+For example, `my_spec_helper_acceptance.rb` (creative, no?):
 
 ```ruby
 require 'beaker-rspec'
-require 'pry'
+
+logger.error("LOADED MYYYYYYYYYY Spec Acceptance Helper")
 
 # Install Puppet on all hosts
-hosts.each do |host|
-  on host, install_puppet
-end
+install_puppet_on(hosts, options)
 
 RSpec.configure do |c|
   module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))
@@ -114,6 +119,18 @@ RSpec.configure do |c|
 end
 ```
 
+**NOTE** that the `install_puppet_on` method used above will install the latest
+Puppet 3.x version. If you'd like to install a more modern version, you can
+replace that line with this one:
+
+```ruby
+install_puppet_agent_on(hosts, options)
+```
+
+This method will install the latest puppet-agent from the specified
+[puppet collection](https://docs.puppet.com/puppet/latest/reference/puppet_collections.html)
+(defaults to `pc1`).
+
 Update spec_helper_acceptance.rb to reflect the module under test.  You will need to set the correct module name and add any module dependencies.  Place the file in the `spec` directory (in this case `puppetlabs-mysql/spec`)
 
 ##Create spec tests for your module
@@ -123,7 +140,10 @@ Spec tests are written in [RSpec](http://rspec.info). You can also use [serversp
 Example spec file `spec/acceptance/mysql_account_delete_spec.rb`:
 
 ```ruby
-require 'spec_helper_acceptance'
+# NOTE: the require must match the name of the helper file created above.
+#   If you changed the name there, you'll have to change it here.
+#   You can verify this is correct when you see the log statement from the helper.
+require 'my_spec_helper_acceptance'
 
 describe 'mysql::server::account_security class' do
   let(:manifest) {
