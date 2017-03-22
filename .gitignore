@@ -1,3 +1,6 @@
 Gemfile.lock
 .bundle
 *.swp
+log
+.vagrant
+*.gem
