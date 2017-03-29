@@ -1,6 +1,7 @@
-# default - History
+# worker - History
 ## Tags
-* [LATEST - 24 Oct, 2016 (b02c1c50)](#LATEST)
+* [LATEST - 29 Mar, 2017 (0197f39f)](#LATEST)
+* [6.0.0 - 24 Oct, 2016 (77470480)](#6.0.0)
 * [5.6.0 - 24 Jun, 2016 (bc70fe5a)](#5.6.0)
 * [5.5.0 - 23 Jun, 2016 (a289ce27)](#5.5.0)
 * [5.4.0 - 9 Jun, 2016 (f030a8b5)](#5.4.0)
@@ -27,7 +28,69 @@
 * [beaker-rspec1.0.0 - 3 Dec, 2013 (65e89ec9)](#beaker-rspec1.0.0)
 
 ## Details
-### <a name = "LATEST">LATEST - 24 Oct, 2016 (b02c1c50)
+### <a name = "LATEST">LATEST - 29 Mar, 2017 (0197f39f)
+
+* (GEM) update beaker-rspec version to 6.1.0 (0197f39f)
+
+* (BKR-1049) Updating require to align with oldest supported PE version. This also matches the merged beaker PR. (eb794f0f)
+
+
+```
+(BKR-1049) Updating require to align with oldest supported PE version. This also matches the merged beaker PR.
+
+Syntax Updates
+
+* Pinned the upper bound on Ruby
+* Pinned the rake and rspec dependencies to match Beaker core
+* Fixed the license to meet SPDX
+* Added a .travis.yml that builds the gem
+* Updated the .gitignore file to ignore test garbage
+* Pin rack version to < 2.2.2
+```
+* Merge pull request #88 from kevpl/doc_readme_improvements (ef75a9e6)
+
+
+```
+Merge pull request #88 from kevpl/doc_readme_improvements
+
+(BKR-968) README improvements
+```
+* (BKR-968) Add puppet v4 install instructions (de809925)
+
+
+```
+(BKR-968) Add puppet v4 install instructions
+
+Before, we only described the  method, which
+defaults to installing Puppet's latest 3.8.z version. Now,
+we've described that situation, and introduced
+ to introduce installing newer
+versions of Puppet.
+
+[skip ci]
+```
+* (BKR-968) fix doc install errors (78c9370f)
+
+
+```
+(BKR-968) fix doc install errors
+
+Before this change, the install instructions were incorrectly
+iterating through all hosts and calling  on
+each. That method is designed as a convenience one that
+iterates over all hosts, installing on each of them, so you
+can see how this compounds negatively for us. These changes
+update the doc so that it's correct. They also provide a
+little more readability, and work around the fact that the
+chosen module (puppetlabs-mysql) has now been flushed out
+with its own version of all the files we create in the
+tutorial.
+
+[skip ci]
+```
+### <a name = "6.0.0">6.0.0 - 24 Oct, 2016 (77470480)
+
+* (HISTORY) update beaker-rspec history for gem release 6.0.0 (77470480)
 
 * (GEM) update beaker-rspec version to 6.0.0 (b02c1c50)
 
