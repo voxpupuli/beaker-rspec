@@ -1,8 +1,8 @@
-#beaker-rspec
+# beaker-rspec
 
 beaker-rspec is a bridge between the puppet acceptance test harness ([beaker](https://github.com/puppetlabs/beaker)) and [rspec](https://github.com/rspec/rspec). It also integrates [serverspec](http://serverspec.org/).
 
-#Upgrading from beaker-rspec 5 to 6
+# Upgrading from beaker-rspec 5 to 6
 
 In beaker-rspec 6, we've picked up the newest beaker, 3.y. In this release, we've
 given up support for Ruby 1.9 and moved to 2.2.5 as our lowest tested version,
@@ -13,7 +13,7 @@ To learn more about those changes, please checkout our
 doc. Note that besides the Ruby version & beaker dependency change, nothing else
 was changed in beaker-rspec itself.
 
-#Typical Workflow
+# Typical Workflow
 
 Beaker does setup and provision all nodes from your nodeset on each test run, and cleans up the VMs after use. During development on a module it can be very handy to keep the VMs available for inspection or reuse. Set `BEAKER_destroy=no` do skip the cleanup and `BEAKER_provision=no` once the VMs are created.
 
@@ -31,7 +31,7 @@ Beaker does setup and provision all nodes from your nodeset on each test run, an
 
         cd .vagrant/beaker_vagrant_files/default.yml ; vagrant destroy --force
 
-##Supported ENV variables
+## Supported ENV variables
 
 * `BEAKER_color`: set to `no` to disable color output
 * `BEAKER_debug`: set to any value to enable beaker debug logging
@@ -44,16 +44,16 @@ Beaker does setup and provision all nodes from your nodeset on each test run, an
 
 For details on the specific mappings, the [setup code](https://github.com/puppetlabs/beaker-rspec/blob/2771b4b1864692690254a969680a57ff22ac0516/lib/beaker-rspec/spec_helper.rb#L26-L32) and the [beaker docs](https://github.com/puppetlabs/beaker/blob/master/docs/tutorials/the_command_line.md).
 
-#Building your Module Testing Environment
+# Building your Module Testing Environment
 
 Using puppetlabs-mysql as an example module.
 
-##Clone the module repository of the module where you want to add tests
+## Clone the module repository of the module where you want to add tests
 
     git clone https://github.com/puppetlabs/puppetlabs-mysql
     cd puppetlabs-mysql
 
-##Install beaker-rspec
+## Install beaker-rspec
 
 In module's top level directory edit the Gemfile. You should see a `:system_tests`
 or `:acceptance` group there, but if not, add beaker-rspec there:
@@ -68,7 +68,7 @@ Then run
 
     bundle install
 
-##Create node files
+## Create node files
 
 These files indicate the nodes (or hosts) that the tests will be run on.  By default, any node file called `default.yml` will be used.  You can override this using the `BEAKER_set` environment variable to indicate an alternate file.  Do not provide full path or the '.yml' file extension to `BEAKER_set`, it is assumed to be located in 'spec/acceptance/nodesets/${NAME}.yml' by beaker-rspec.  If you wish to use a completely different file location use `BEAKER_setfile` and set it to the full path (including file extension) of your hosts file.
 
@@ -84,7 +84,7 @@ Create the nodesets directory.  From module's top level directory:
 
 Copy any nodesets that you wish to use into the nodesets directory.
 
-##Create the spec_helper_acceptance.rb
+## Create the spec_helper_acceptance.rb
 
 In the `spec` folder, you should see the project's `spec_helper_acceptance.rb`.
 This file contains all of the setup logic needed to get your Systems Under Test
@@ -134,7 +134,7 @@ This method will install the latest puppet-agent from the specified
 
 Update spec_helper_acceptance.rb to reflect the module under test.  You will need to set the correct module name and add any module dependencies.  Place the file in the `spec` directory (in this case `puppetlabs-mysql/spec`)
 
-##Create spec tests for your module
+## Create spec tests for your module
 
 Spec tests are written in [RSpec](http://rspec.info). You can also use [serverspec](http://serverspec.org/) matchers to test [resources](http://serverspec.org/resource_types.html).
 
@@ -179,7 +179,7 @@ describe 'mysql::server::account_security class' do
 end
 ```
 
-##Run your spec tests
+## Run your spec tests
 
 From module's top level directory
 
