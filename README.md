@@ -40,6 +40,7 @@ cd .vagrant/beaker_vagrant_files/default.yml ; vagrant destroy --force
 * `BEAKER_debug`: set to any value to enable beaker debug logging
 * `BEAKER_destroy`: set to `no` to keep the VMs after the test run. Set to `onpass` to keep the VMs around only after a test failure.
 * `BEAKER_keyfile`: specify alternate SSH key to access the test VMs
+* `BEAKER_options_file`: set to the file path of the options file to be used as the default options for beaker.  Equivalent to the `--options-file` parameter.  
 * `BEAKER_provision`: set to `no` to skip provisioning boxes before testing, beaker will then assume that boxes are already provisioned and reachable
 * `BEAKER_set`: set to the name of the node file to be used during testing (exclude .yml file extension, it will be added by beaker-rspec). The file is assumed to be in module's spec/acceptance/nodesets directory.
 * `BEAKER_setfile` - set to the full path to a node file be used during testing (be sure to include full path and file extensions, beaker-rspec will use this path without editing/altering it in any way)
