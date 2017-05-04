@@ -30,9 +30,10 @@ RSpec.configure do |c|
     :keyfile     => ENV['BEAKER_keyfile'] || ENV['RS_KEYFILE'],
     :debug       => ENV['BEAKER_debug'] || ENV['RS_DEBUG'],
     :destroy     => ENV['BEAKER_destroy'] || ENV['RS_DESTROY'],
-  }.delete_if {|key, value| value.nil?}
-  #combine defaults and env_vars to determine overall options
-  options = defaults.merge(env_vars)
+    :optionsfile => ENV['BEAKER_options_file'] || ENV['RS_OPTIONS_FILE'],
+   }.delete_if {|key, value| value.nil?}
+   #combine defaults and env_vars to determine overall options
+   options = defaults.merge(env_vars)
 
   # process options to construct beaker command string
   nodesetfile = options[:nodesetfile] || File.join('spec/acceptance/nodesets',"#{options[:nodeset]}.yml")
@@ -40,9 +41,10 @@ RSpec.configure do |c|
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
   debug = options[:debug] ? ['--log-level', 'debug'] : nil
   color = options[:color] == 'no' ? ['--no-color'] : nil
+  options_file = options[:optionsfile] ? ['--options-file',options[:optionsfile]] || nil
 
   # Configure all nodes in nodeset
-  c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color].flatten.compact)
+  c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color, options_file]).flatten.compact)
   c.provision
   c.validate
   c.configure
