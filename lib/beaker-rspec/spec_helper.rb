@@ -41,10 +41,10 @@ RSpec.configure do |c|
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
   debug = options[:debug] ? ['--log-level', 'debug'] : nil
   color = options[:color] == 'no' ? ['--no-color'] : nil
-  options_file = options[:optionsfile] ? ['--options-file',options[:optionsfile]] || nil
+  options_file = options[:optionsfile] ? ['--options-file',options[:optionsfile]] : nil
 
   # Configure all nodes in nodeset
-  c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color, options_file]).flatten.compact)
+  c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color, options_file].flatten.compact)
   c.provision
   c.validate
   c.configure
