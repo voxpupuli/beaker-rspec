@@ -42,7 +42,8 @@ cd .vagrant/beaker_vagrant_files/default.yml ; vagrant destroy --force
 * `BEAKER_keyfile`: specify alternate SSH key to access the test VMs
 * `BEAKER_options_file`: set to the file path of the options file to be used as the default options for beaker.  Equivalent to the `--options-file` parameter.  
 * `BEAKER_provision`: set to `no` to skip provisioning boxes before testing, beaker will then assume that boxes are already provisioned and reachable
-* `BEAKER_set`: set to the name of the node file to be used during testing (exclude .yml file extension, it will be added by beaker-rspec). The file is assumed to be in module's spec/acceptance/nodesets directory.
+* `BEAKER_setdir`: change the directory with nodesets. Defaults to the module's `spec/acceptance/nodesets` directory.
+* `BEAKER_set`: set to the name of the node file to be used during testing (exclude .yml file extension, it will be added by beaker-rspec). The file is assumed to be in the `setdir` (see `BEAKER_setdir`).
 * `BEAKER_setfile` - set to the full path to a node file be used during testing (be sure to include full path and file extensions, beaker-rspec will use this path without editing/altering it in any way)
 
 For details on the specific mappings, the [setup code](https://github.com/puppetlabs/beaker-rspec/blob/2771b4b1864692690254a969680a57ff22ac0516/lib/beaker-rspec/spec_helper.rb#L26-L32) and the [beaker docs](https://github.com/puppetlabs/beaker/blob/master/docs/tutorials/the_command_line.md).
@@ -73,7 +74,7 @@ Then run
 
 ## Create node files
 
-These files indicate the nodes (or hosts) that the tests will be run on.  By default, any node file called `default.yml` will be used.  You can override this using the `BEAKER_set` environment variable to indicate an alternate file.  Do not provide full path or the '.yml' file extension to `BEAKER_set`, it is assumed to be located in 'spec/acceptance/nodesets/${NAME}.yml' by beaker-rspec.  If you wish to use a completely different file location use `BEAKER_setfile` and set it to the full path (including file extension) of your hosts file.
+These files indicate the nodes (or hosts) that the tests will be run on.  By default, any node file called `default.yml` will be used.  You can override this using the `BEAKER_set` environment variable to indicate an alternate file.  Do not provide full path or the '.yml' file extension to `BEAKER_set`, beaker-rspec expands the filename to '${DIR}/${NAME}.yml'.  The directory defaults to `spec/acceptance/nodesets` but can be overridden with the `BEAKER_setdir` variable.  `BEAKER_setdir` gives full control over the path (including file extension).
 
 Nodes are pulled from [Puppet Labs Vagrant Boxes](https://vagrantcloud.com/puppetlabs).
 
