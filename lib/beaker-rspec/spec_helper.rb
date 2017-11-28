@@ -25,6 +25,7 @@ RSpec.configure do |c|
   env_vars = {
     :color       => ENV['BEAKER_color'] || ENV['RS_COLOR'],
     :nodeset     => ENV['BEAKER_set'] || ENV['RS_SET'],
+    :nodesetdir  => ENV['BEAKER_setdir'] || ENV['RS_SETDIR'],
     :nodesetfile => ENV['BEAKER_setfile'] || ENV['RS_SETFILE'],
     :provision   => ENV['BEAKER_provision'] || ENV['RS_PROVISION'],
     :keyfile     => ENV['BEAKER_keyfile'] || ENV['RS_KEYFILE'],
@@ -36,7 +37,8 @@ RSpec.configure do |c|
    options = defaults.merge(env_vars)
 
   # process options to construct beaker command string
-  nodesetfile = options[:nodesetfile] || File.join('spec/acceptance/nodesets',"#{options[:nodeset]}.yml")
+  nodesetdir = options[:nodesetdir] || dir.join('spec', 'acceptance', 'nodesets')
+  nodesetfile = options[:nodesetfile] || File.join(nodesetdir, "#{options[:nodeset]}.yml")
   fresh_nodes = options[:provision] == 'no' ? '--no-provision' : nil
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
   debug = options[:debug] ? ['--log-level', 'debug'] : nil
