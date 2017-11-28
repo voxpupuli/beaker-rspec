@@ -37,7 +37,7 @@ RSpec.configure do |c|
    options = defaults.merge(env_vars)
 
   # process options to construct beaker command string
-  nodesetdir = options[:nodesetdir] || dir.join('spec', 'acceptance', 'nodesets')
+  nodesetdir = options[:nodesetdir] || File.join('spec', 'acceptance', 'nodesets')
   nodesetfile = options[:nodesetfile] || File.join(nodesetdir, "#{options[:nodeset]}.yml")
   fresh_nodes = options[:provision] == 'no' ? '--no-provision' : nil
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
