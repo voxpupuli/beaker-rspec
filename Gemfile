@@ -18,5 +18,7 @@ else
   gem 'beaker'
 end
 
+# For running the spec/acceptance/example_spec.rb
+gem 'beaker-vagrant'
 
 gemspec
