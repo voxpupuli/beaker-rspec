@@ -21,7 +21,12 @@ Gem::Specification.new do |s|
 
   # Testing dependencies
   s.add_development_dependency 'minitest', '~> 5.4'
-  s.add_development_dependency 'fakefs', '~> 0.6'
+  # pin fakefs for Ruby < 2.3
+  if RUBY_VERSION < "2.3"
+    s.add_development_dependency 'fakefs', '~> 0.6', '< 0.14'
+  else
+    s.add_development_dependency 'fakefs', '~> 0.6'
+  end
   s.add_development_dependency 'rake', '~> 10.1'
 
   # Documentation dependencies
@@ -33,7 +38,7 @@ Gem::Specification.new do |s|
   end
 
   # Run time dependencies
-  s.add_runtime_dependency 'beaker', '~> 3.0'
+  s.add_runtime_dependency 'beaker', '> 3.0'
   s.add_runtime_dependency 'rspec', '~> 3.0'
   s.add_runtime_dependency 'serverspec', '~> 2'
   s.add_runtime_dependency 'specinfra', '~> 2'
