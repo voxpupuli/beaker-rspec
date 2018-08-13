@@ -21,4 +21,8 @@ end
 # For running the spec/acceptance/example_spec.rb
 gem 'beaker-vagrant'
 
+# Dependencies for CI acceptance testing; TODO: fix CI so this can be removed
+gem 'beaker-hostgenerator'
+gem 'beaker-vmpooler', '~> 1.3'
+
 gemspec
