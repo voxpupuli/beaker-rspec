@@ -47,14 +47,23 @@ RSpec.configure do |c|
 
   # Configure all nodes in nodeset
   c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color, options_file].flatten.compact)
-  c.provision
-  c.validate
-  c.configure
 
   trap "SIGINT" do
     c.cleanup
     exit!(1)
   end
+
+  begin
+    c.provision
+  rescue StandardError => e
+    logger.error(e)
+    logger.info(e.backtrace)
+    c.cleanup
+    exit!(1)
+  end
+
+  c.validate
+  c.configure
 
   # Destroy nodes if no preserve hosts
   c.after :suite do
