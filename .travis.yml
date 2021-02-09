@@ -1,9 +1,0 @@
-before_install:
-  - gem --version
-language: ruby
-script: 'bundle exec gem build beaker-rspec.gemspec'
-notifications:
-  email: false
-rvm:
-  - 2.1.9
-  - 2.2.4
