@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = %q{RSpec bindings for beaker, see https://github.com/puppetlabs/beaker}
   s.license     = 'Apache-2.0'
 
-  s.required_ruby_version = Gem::Requirement.new('>= 2.1.8', '<3.0.0')
+  s.required_ruby_version = Gem::Requirement.new('>= 2.1.8', '<4.0.0')
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
