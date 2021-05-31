@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   else
     s.add_development_dependency 'fakefs', '~> 0.6'
   end
-  s.add_development_dependency 'rake', '~> 10.1'
+  s.add_development_dependency 'rake', '~> 12.3'
 
   # Documentation dependencies
   s.add_development_dependency 'yard'
