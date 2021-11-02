@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   # Testing dependencies
   s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'fakefs', '>= 0.6', '< 2'
-  s.add_development_dependency 'rake', '>= 12.3'
+  s.add_development_dependency 'rake', '~> 13.0'
 
   # Documentation dependencies
   s.add_development_dependency 'yard'
