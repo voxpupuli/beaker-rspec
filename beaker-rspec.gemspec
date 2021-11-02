@@ -5,14 +5,14 @@ require 'beaker-rspec/version'
 Gem::Specification.new do |s|
   s.name        = "beaker-rspec"
   s.version     = BeakerRSpec::Version::STRING
-  s.authors     = ["Puppetlabs"]
-  s.email       = ["sqa@puppetlabs.com"]
-  s.homepage    = "https://github.com/puppetlabs/beaker-rspec"
+  s.authors     = ["Vox Pupuli"]
+  s.email       = ["voxpupuli@groups.io"]
+  s.homepage    = "https://github.com/voxpupuli/beaker-rspec"
   s.summary     = %q{RSpec bindings for beaker}
-  s.description = %q{RSpec bindings for beaker, see https://github.com/puppetlabs/beaker}
+  s.description = %q{RSpec bindings for beaker, see https://github.com/voxpupuli/beaker}
   s.license     = 'Apache-2.0'
 
-  s.required_ruby_version = Gem::Requirement.new('>= 2.1.8', '<4.0.0')
+  s.required_ruby_version = '>= 2.4.0', '<4.0.0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
@@ -21,13 +21,8 @@ Gem::Specification.new do |s|
 
   # Testing dependencies
   s.add_development_dependency 'minitest', '~> 5.4'
-  # pin fakefs for Ruby < 2.3
-  if RUBY_VERSION < "2.3"
-    s.add_development_dependency 'fakefs', '~> 0.6', '< 0.14'
-  else
-    s.add_development_dependency 'fakefs', '~> 0.6'
-  end
-  s.add_development_dependency 'rake', '~> 12.3'
+  s.add_development_dependency 'fakefs', '>= 0.6', '< 2'
+  s.add_development_dependency 'rake', '~> 13.0'
 
   # Documentation dependencies
   s.add_development_dependency 'yard'
@@ -35,10 +30,6 @@ Gem::Specification.new do |s|
 
   # Dependency for example spec/acceptance tests
   s.add_runtime_dependency 'beaker-pe'
-
-  if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('2.2.2')
-    s.add_development_dependency 'rack', '~> 1.6'
-  end
 
   # Run time dependencies
   s.add_runtime_dependency 'beaker', '> 3.0'
