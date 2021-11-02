@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
   # Dependency for example spec/acceptance tests
   s.add_runtime_dependency 'beaker-pe'
 
-
   # Run time dependencies
   s.add_runtime_dependency 'beaker', '> 3.0'
   s.add_runtime_dependency 'rspec', '~> 3.0'
