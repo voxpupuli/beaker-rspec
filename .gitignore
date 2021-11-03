@@ -4,3 +4,4 @@ Gemfile.lock
 log
 .vagrant
 *.gem
+.vendor/
