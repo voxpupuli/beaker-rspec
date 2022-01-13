@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-task default: [:changelog]
+require 'beaker-rspec/rake_task'
+
+task default: :beaker
 
 begin
   require 'rubygems'

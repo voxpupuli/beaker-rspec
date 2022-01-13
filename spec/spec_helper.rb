@@ -1,3 +1,3 @@
-ENV['RS_SETFILE'] ||= 'sample.cfg'
+ENV['RS_SETFILE'] ||= 'centos8-64'
 
 require "beaker-rspec"
