@@ -10,12 +10,8 @@ def location_for(place, fake_version = nil)
   end
 end
 
-beaker_version = ENV['BEAKER_VERSION']
-
-if beaker_version
+if (beaker_version = ENV['BEAKER_VERSION'])
   gem 'beaker', *location_for(beaker_version)
-else
-  gem 'beaker'
 end
 
 # For running the spec/acceptance/example_spec.rb
