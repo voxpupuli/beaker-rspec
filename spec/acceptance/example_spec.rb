@@ -12,8 +12,8 @@ describe "ignore" do
     self.hosts = hosts
   end
 
-  example "access options hash" do
-    install_pe
+  example "use DSL method" do
+    echo_on hosts, 'Hello World!'
   end
 
   example "access the logger" do

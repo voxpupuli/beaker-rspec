@@ -28,9 +28,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'yard'
   s.add_development_dependency 'thin'
 
-  # Dependency for example spec/acceptance tests
-  s.add_development_dependency 'beaker-pe'
-
   # Run time dependencies
   s.add_runtime_dependency 'beaker', '> 3.0'
   s.add_runtime_dependency 'rspec', '~> 3.0'
