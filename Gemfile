@@ -10,20 +10,18 @@ def location_for(place, fake_version = nil)
   end
 end
 
-beaker_version = ENV['BEAKER_VERSION']
-
-if beaker_version
+if (beaker_version = ENV['BEAKER_VERSION'])
   gem 'beaker', *location_for(beaker_version)
-else
-  gem 'beaker'
 end
 
-# For running the spec/acceptance/example_spec.rb
-gem 'beaker-vagrant'
-
-# Dependencies for CI acceptance testing; TODO: fix CI so this can be removed
-gem 'beaker-hostgenerator'
-gem 'beaker-vmpooler', '~> 1.3'
+case ENV['BEAKER_HYPERVISOR']
+when 'docker'
+  gem 'beaker-docker'
+when 'vagrant', 'vagrant_libvirt'
+  gem 'beaker-vagrant'
+when 'vmpooler'
+  gem 'beaker-vmpooler', '~> 1.3'
+end
 
 group :release do
   gem 'github_changelog_generator', '>= 1.16.4', require: false if RUBY_VERSION >= '2.5'
