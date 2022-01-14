@@ -1,10 +1,10 @@
 # beaker-rspec
 
-[![License](https://img.shields.io/github/license/voxpupuli/beaker.svg)](https://github.com/voxpupuli/beaker/blob/master/LICENSE)
-[![Test](https://github.com/voxpupuli/beaker/actions/workflows/test.yml/badge.svg)](https://github.com/voxpupuli/beaker/actions/workflows/test.yml)
-[![Release](https://github.com/voxpupuli/beaker/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/beaker/actions/workflows/release.yml)
-[![RubyGem Version](https://img.shields.io/gem/v/beaker.svg)](https://rubygems.org/gems/beaker)
-[![RubyGem Downloads](https://img.shields.io/gem/dt/beaker.svg)](https://rubygems.org/gems/beaker)
+[![License](https://img.shields.io/github/license/voxpupuli/beaker-rspec.svg)](https://github.com/voxpupuli/beaker-rspec/blob/master/LICENSE)
+[![Test](https://github.com/voxpupuli/beaker-rspec/actions/workflows/test.yml/badge.svg)](https://github.com/voxpupuli/beaker-rspec/actions/workflows/test.yml)
+[![Release](https://github.com/voxpupuli/beaker-rspec/actions/workflows/release.yml/badge.svg)](https://github.com/voxpupuli/beaker-rspec/actions/workflows/release.yml)
+[![RubyGem Version](https://img.shields.io/gem/v/beaker-rspec.svg)](https://rubygems.org/gems/beaker-rspec)
+[![RubyGem Downloads](https://img.shields.io/gem/dt/beaker-rspec.svg)](https://rubygems.org/gems/beaker-rspec)
 [![Donated by Puppet Inc](https://img.shields.io/badge/donated%20by-Puppet%20Inc-fb7047.svg)](#transfer-notice)
 
 beaker-rspec is a bridge between the puppet acceptance test harness ([beaker](https://github.com/voxpupuli/beaker)) and [rspec](https://github.com/rspec/rspec). It also integrates [serverspec](http://serverspec.org/).
