@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [7.1.0](https://github.com/voxpupuli/beaker-rspec/tree/7.1.0) (2022-01-14)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/7.0.0...7.1.0)
+
+**Implemented enhancements:**
+
+- Reduce beaker-pe to a development dependendency [\#109](https://github.com/voxpupuli/beaker-rspec/pull/109) ([ekohl](https://github.com/ekohl))
+
+**Merged pull requests:**
+
+- Add acceptance tests to CI; drop beaker-pe development dependency [\#110](https://github.com/voxpupuli/beaker-rspec/pull/110) ([ekohl](https://github.com/ekohl))
+
 ## [7.0.0](https://github.com/voxpupuli/beaker-rspec/tree/7.0.0) (2021-11-03)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/6.3.0...7.0.0)
