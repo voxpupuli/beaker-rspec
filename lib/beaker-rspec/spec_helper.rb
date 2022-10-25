@@ -1,8 +1,11 @@
 require 'beaker-rspec/beaker_shim'
 require "beaker-rspec/helpers/serverspec"
+require "beaker-rspec/matchers/apply"
 include BeakerRSpec::BeakerShim
 
 RSpec.configure do |c|
+  c.include BeakerRSpec::Matchers::Apply
+
   # Enable color
   c.tty = true
 
