@@ -38,7 +38,7 @@ describe "ignore" do
                'ssh'
              end
       describe service(sshd), :node => node do
-        it { should be_running }
+        it { is_expected.to be_running }
       end
 
       usr = case node['platform']
@@ -48,7 +48,7 @@ describe "ignore" do
               'root'
             end
       describe user(usr), :node => node do
-         it { should exist }
+         it { is_expected.to exist }
       end
     end
   end
@@ -61,7 +61,7 @@ describe "ignore" do
             'root'
           end
     describe user(usr) do
-       it { should exist }
+       it { is_expected.to exist }
     end
   end
 
@@ -69,8 +69,8 @@ describe "ignore" do
     contents = "four = five\n[one]\ntwo = three"
     create_remote_file(default, "file_with_contents.txt", contents)
     describe file("file_with_contents.txt") do
-      it { should be_file }
-      it { should contain(contents) }
+      it { is_expected.to be_file }
+      it { is_expected.to contain(contents) }
     end
   end
 end
