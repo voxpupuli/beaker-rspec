@@ -103,9 +103,9 @@ class Specinfra::CommandFactory
       method += "_#{subaction}" if subaction
 
       common_class = Specinfra::Command
-      base_class = common_class.const_get('Base')
-      os_class = common_class.const_get('Windows')
-      version_class = os_class.const_get('Base')
+      base_class = common_class.const_get(:Base)
+      os_class = common_class.const_get(:Windows)
+      version_class = os_class.const_get(:Base)
       command_class = version_class.const_get(resource_type.to_camel_case)
 
       command_class = command_class.create
