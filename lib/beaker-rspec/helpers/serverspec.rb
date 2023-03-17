@@ -150,7 +150,7 @@ module Specinfra
       cmd = Specinfra.command.get(meth, *args)
       backend = Specinfra.backend
       ret = backend.run_command(cmd)
-      if meth.to_s =~ /^check/
+      if meth.to_s.start_with?('check')
         ret.success?
       else
         ret
