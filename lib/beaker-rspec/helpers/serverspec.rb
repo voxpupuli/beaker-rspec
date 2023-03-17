@@ -80,7 +80,7 @@ module Specinfra::Helper::Os
     return Specinfra.configuration.os if Specinfra.configuration.os
     backend = Specinfra.backend
     node = get_working_node
-    if node['platform'] =~ /windows/
+    if node['platform'].include?('windows')
       return {:family => 'windows'}
     end
     Specinfra::Helper::DetectOs.subclasses.each do |c|
@@ -126,7 +126,7 @@ module Specinfra
     def self.method_missing(meth, *args)
       backend = Specinfra.backend
       node = get_working_node
-      if node['platform'] !~ /windows/
+      if !node['platform'].include?('windows')
         processor = Specinfra::Processor
         if processor.respond_to?(meth)
           processor.send(meth, *args)
@@ -200,7 +200,7 @@ module Specinfra::Backend
   class BeakerDispatch < BeakerBase
 
     def dispatch_method(meth, *args)
-      if get_working_node['platform'] =~ /windows/
+      if get_working_node['platform'].include?('windows')
         cygwin_backend.send(meth, *args)
       else
         exec_backend.send(meth, *args)
