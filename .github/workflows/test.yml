@@ -1,12 +1,27 @@
 name: Test
 
 on:
-  - pull_request
+  pull_request: {}
+  push:
+    branches:
+      - master
 
 env:
+  BUNDLE_WITHOUT: release
   BEAKER_HYPERVISOR: docker
 
 jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Ruby ${{ matrix.ruby }}
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+          bundler-cache: true
+      - name: Run Rubocop
+        run: bundle exec rake rubocop
   build:
     runs-on: ubuntu-latest
     strategy:
@@ -19,17 +34,15 @@ jobs:
           - "2.7"
           - "3.0"
           - "3.1"
-    env:
-      BUNDLE_WITHOUT: release
     name: Ruby ${{ matrix.ruby }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
       - name: Verify gem builds
-        run: bundle exec gem build beaker-rspec.gemspec
+        run: gem build beaker-rspec.gemspec
       - name: Run acceptance tests
         run: bundle exec rake beaker
