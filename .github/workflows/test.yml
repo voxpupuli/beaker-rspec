@@ -18,7 +18,7 @@ jobs:
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "3.1"
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rake rubocop
@@ -28,9 +28,6 @@ jobs:
       fail-fast: false
       matrix:
         ruby:
-          - "2.4"
-          - "2.5"
-          - "2.6"
           - "2.7"
           - "3.0"
           - "3.1"
