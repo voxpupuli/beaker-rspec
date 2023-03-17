@@ -11,13 +11,6 @@ Lint/IneffectiveAccessModifier:
   Exclude:
     - 'lib/beaker-rspec/helpers/serverspec.rb'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: ContextCreatingMethods, MethodCreatingMethods.
-Lint/UselessAccessModifier:
-  Exclude:
-    - 'lib/beaker-rspec/helpers/serverspec.rb'
-
 # Offense count: 3
 Lint/UselessAssignment:
   Exclude:

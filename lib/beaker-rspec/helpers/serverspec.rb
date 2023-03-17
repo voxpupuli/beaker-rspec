@@ -144,7 +144,6 @@ module Specinfra
       end
     end
 
-    private
 
     def self.run(meth, *args)
       backend = Specinfra.backend
