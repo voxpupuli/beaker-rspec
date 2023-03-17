@@ -29,6 +29,21 @@ describe "ignore" do
     step('testing that a step can be used')
   end
 
+  describe "apply matcher" do
+    subject do
+      <<~PUPPET
+      file { '/tmp/beaker-rspec':
+        ensure  => file,
+        content => 'Hello World!',
+      }
+      PUPPET
+    end
+
+    it { is_expected.to apply.idempotently }
+
+    specify { expect(file('/tmp/beaker-rspec')).to be_file.and(have_attributes(content: 'Hello World!')) }
+  end
+
   context "has serverspec support" do
     hosts.each do |node|
       sshd = case node['platform']
