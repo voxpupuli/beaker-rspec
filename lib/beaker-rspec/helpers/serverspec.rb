@@ -232,7 +232,7 @@ module Specinfra::Backend
     # @param [String] cmd The serverspec command to executed
     # @param [Hash] opt No currently supported options
     # @return [Hash] Returns a hash containing :exit_status, :stdout and :stderr
-    def run_command(cmd, opt = {})
+    def run_command(cmd, _opt = {})
       node = get_working_node
       script = create_script(cmd)
       #when node is not cygwin rm -rf will fail so lets use native del instead
@@ -269,7 +269,7 @@ module Specinfra::Backend
     # @param [String] cmd The serverspec command to executed
     # @param [Hash] opt No currently supported options
     # @return [Hash] Returns a hash containing :exit_status, :stdout and :stderr
-    def run_command(cmd, opt = {})
+    def run_command(cmd, _opt = {})
       node = get_working_node
       cmd = build_command(cmd)
       cmd = add_pre_command(cmd)
