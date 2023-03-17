@@ -80,7 +80,7 @@ module Specinfra::Helper::Os
     return Specinfra.configuration.os if Specinfra.configuration.os
     backend = Specinfra.backend
     node = get_working_node
-    if node['platform'] =~ /windows/
+    if node['platform'].include?('windows')
       return {:family => 'windows'}
     end
     Specinfra::Helper::DetectOs.subclasses.each do |c|
@@ -103,9 +103,9 @@ class Specinfra::CommandFactory
       method += "_#{subaction}" if subaction
 
       common_class = Specinfra::Command
-      base_class = common_class.const_get('Base')
-      os_class = common_class.const_get('Windows')
-      version_class = os_class.const_get('Base')
+      base_class = common_class.const_get(:Base)
+      os_class = common_class.const_get(:Windows)
+      version_class = os_class.const_get(:Base)
       command_class = version_class.const_get(resource_type.to_camel_case)
 
       command_class = command_class.create
@@ -126,7 +126,7 @@ module Specinfra
     def self.method_missing(meth, *args)
       backend = Specinfra.backend
       node = get_working_node
-      if node['platform'] !~ /windows/
+      if !node['platform'].include?('windows')
         processor = Specinfra::Processor
         if processor.respond_to?(meth)
           processor.send(meth, *args)
@@ -144,14 +144,13 @@ module Specinfra
       end
     end
 
-    private
 
     def self.run(meth, *args)
       backend = Specinfra.backend
       cmd = Specinfra.command.get(meth, *args)
       backend = Specinfra.backend
       ret = backend.run_command(cmd)
-      if meth.to_s =~ /^check/
+      if meth.to_s.start_with?('check')
         ret.success?
       else
         ret
@@ -189,7 +188,7 @@ module Specinfra::Backend
       {
         :exit_status => r.exit_code,
         :stdout      => r.stdout,
-        :stderr      => r.stderr
+        :stderr      => r.stderr,
       }
     end
 
@@ -201,7 +200,7 @@ module Specinfra::Backend
   class BeakerDispatch < BeakerBase
 
     def dispatch_method(meth, *args)
-      if get_working_node['platform'] =~ /windows/
+      if get_working_node['platform'].include?('windows')
         cygwin_backend.send(meth, *args)
       else
         exec_backend.send(meth, *args)
@@ -232,7 +231,7 @@ module Specinfra::Backend
     # @param [String] cmd The serverspec command to executed
     # @param [Hash] opt No currently supported options
     # @return [Hash] Returns a hash containing :exit_status, :stdout and :stderr
-    def run_command(cmd, opt = {})
+    def run_command(cmd, _opt = {})
       node = get_working_node
       script = create_script(cmd)
       #when node is not cygwin rm -rf will fail so lets use native del instead
@@ -269,7 +268,7 @@ module Specinfra::Backend
     # @param [String] cmd The serverspec command to executed
     # @param [Hash] opt No currently supported options
     # @return [Hash] Returns a hash containing :exit_status, :stdout and :stderr
-    def run_command(cmd, opt = {})
+    def run_command(cmd, _opt = {})
       node = get_working_node
       cmd = build_command(cmd)
       cmd = add_pre_command(cmd)
