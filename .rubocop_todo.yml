@@ -42,11 +42,3 @@ RSpec/ContextWording:
 RSpec/DescribeClass:
   Exclude:
     - 'spec/acceptance/example_spec.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleForMultiline.
-# SupportedStylesForMultiline: comma, consistent_comma, no_comma
-Style/TrailingCommaInHashLiteral:
-  Exclude:
-    - 'lib/beaker-rspec/helpers/serverspec.rb'

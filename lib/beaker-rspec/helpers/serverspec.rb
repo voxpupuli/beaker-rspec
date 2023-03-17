@@ -188,7 +188,7 @@ module Specinfra::Backend
       {
         :exit_status => r.exit_code,
         :stdout      => r.stdout,
-        :stderr      => r.stderr
+        :stderr      => r.stderr,
       }
     end
 
