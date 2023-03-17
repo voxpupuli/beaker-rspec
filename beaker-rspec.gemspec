@@ -20,13 +20,20 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # Testing dependencies
-  s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'fakefs', '>= 0.6', '< 2'
+  s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'rake', '~> 13.0'
 
+  # rubocop
+  s.add_development_dependency 'rubocop', '~> 1.12.0'
+  s.add_development_dependency 'rubocop-minitest'
+  s.add_development_dependency 'rubocop-performance'
+  s.add_development_dependency 'rubocop-rake'
+  s.add_development_dependency 'rubocop-rspec'
+
   # Documentation dependencies
-  s.add_development_dependency 'yard'
   s.add_development_dependency 'thin'
+  s.add_development_dependency 'yard'
 
   # Run time dependencies
   s.add_runtime_dependency 'beaker', '> 3.0'
