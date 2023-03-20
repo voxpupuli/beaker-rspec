@@ -12,10 +12,9 @@ Gem::Specification.new do |s|
   s.description = %q{RSpec bindings for beaker, see https://github.com/voxpupuli/beaker}
   s.license     = 'Apache-2.0'
 
-  s.required_ruby_version = '>= 2.4.0', '<4.0.0'
+  s.required_ruby_version = '>= 2.7.0', '<4.0.0'
 
   s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
@@ -25,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '~> 13.0'
 
   # rubocop
-  s.add_development_dependency 'rubocop', '~> 1.12.0'
+  s.add_development_dependency 'rubocop', '~> 1.48.1'
   s.add_development_dependency 'rubocop-minitest'
   s.add_development_dependency 'rubocop-performance'
   s.add_development_dependency 'rubocop-rake'
