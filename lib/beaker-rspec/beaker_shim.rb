@@ -70,7 +70,7 @@ module BeakerRSpec
     end
 
     # Setter for hosts object
-    def hosts= v
+    def hosts=(v)
       RSpec.configuration.hosts = v
     end
 

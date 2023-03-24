@@ -15,11 +15,10 @@ module Specinfra
   def get_working_node
     example = cur_example
     if example and example.metadata[:node]
-      node = example.metadata[:node]
+      example.metadata[:node]
     else
-      node = default_node
+      default_node
     end
-    node
   end
 
   # The cygwin backend
@@ -40,20 +39,20 @@ end
 module Specinfra
   module Configuration
     class << self
-      VALID_OPTIONS_KEYS = [
-        :backend,
-        :env,
-        :path,
-        :pre_command,
-        :sudo_path,
-        :disable_sudo,
-        :sudo_options,
-        :docker_image,
-        :docker_url,
-        :lxc,
-        :request_pty,
-        :ssh_options,
-        :dockerfile_finalizer,
+      VALID_OPTIONS_KEYS = %i[
+        backend
+        env
+        path
+        pre_command
+        sudo_path
+        disable_sudo
+        sudo_options
+        docker_image
+        docker_url
+        lxc
+        request_pty
+        ssh_options
+        dockerfile_finalizer
       ].freeze
     end
 
@@ -66,9 +65,7 @@ module Specinfra::Helper::Os
 
   def os
     working_node_name = get_working_node.to_s
-    if !@@known_nodes[working_node_name] # haven't seen this yet, better detect the os
-      @@known_nodes[working_node_name] = property[:os] = detect_os
-    end
+    @@known_nodes[working_node_name] = property[:os] = detect_os unless @@known_nodes[working_node_name] # haven't seen this yet, better detect the os
     @@known_nodes[working_node_name]
   end
 
@@ -80,9 +77,7 @@ module Specinfra::Helper::Os
     return Specinfra.configuration.os if Specinfra.configuration.os
     backend = Specinfra.backend
     node = get_working_node
-    if node['platform'].include?('windows')
-      return {:family => 'windows'}
-    end
+    return {family: 'windows'} if node['platform'].include?('windows')
     Specinfra::Helper::DetectOs.subclasses.each do |c|
       res = c.detect
       if res
@@ -109,11 +104,8 @@ class Specinfra::CommandFactory
       command_class = version_class.const_get(resource_type.to_camel_case)
 
       command_class = command_class.create
-      if command_class.respond_to?(method)
-        command_class.send(method, *args)
-      else
-        raise NotImplementedError.new("#{method} is not implemented in #{command_class}")
-      end
+      raise NotImplementedError, "#{method} is not implemented in #{command_class}" unless command_class.respond_to?(method)
+      command_class.send(method, *args)
     end
 
   end
@@ -135,12 +127,10 @@ module Specinfra
         else
           run(meth, *args)
         end
+      elsif backend.respond_to?(meth)
+        backend.send(meth, *args)
       else
-        if backend.respond_to?(meth)
-          backend.send(meth, *args)
-        else
-          run(meth, *args)
-        end
+        run(meth, *args)
       end
     end
 
@@ -167,7 +157,7 @@ module Specinfra::Backend::PowerShell
       when Regexp
         target.source
       else
-        Regexp.escape(target.to_s.gsub '/', '\/').gsub('\n', '(\r\n|\n)')
+        Regexp.escape(target.to_s.gsub('/', '\/')).gsub('\n', '(\r\n|\n)')
       end
     end
   end
@@ -176,19 +166,17 @@ end
 module Specinfra::Backend
   class BeakerBase < Specinfra::Backend::Base
     # Example accessor
-    def example
-      @example
-    end
+    attr_reader :example
 
     # Execute the provided ssh command
     # @param [String] command The command to be executed
     # @return [Hash] Returns a hash containing :exit_status, :stdout and :stderr
     def ssh_exec!(node, command)
-      r = on node, command, { :acceptable_exit_codes => (0..127) }
+      r = on node, command, { acceptable_exit_codes: (0..127) }
       {
-        :exit_status => r.exit_code,
-        :stdout      => r.stdout,
-        :stderr      => r.stderr,
+        exit_status: r.exit_code,
+        stdout: r.stdout,
+        stderr: r.stderr,
       }
     end
 
@@ -237,11 +225,11 @@ module Specinfra::Backend
       #when node is not cygwin rm -rf will fail so lets use native del instead
       #There should be a better way to do this, but for now , this works
       if node.is_cygwin?
-        delete_command = "rm -rf"
-        redirection = "< /dev/null"
+        delete_command = 'rm -rf'
+        redirection = '< /dev/null'
       else
-        delete_command = "del"
-        redirection = "< NUL"
+        delete_command = 'del'
+        redirection = '< NUL'
       end
       on node, "#{delete_command} script.ps1"
       create_remote_file(node, 'script.ps1', script)
@@ -288,9 +276,7 @@ module Specinfra::Backend
       cmd = "#{String(useshell).shellescape} -c #{String(cmd).shellescape}"
 
       path = Specinfra.configuration.path
-      if path
-        cmd = %Q{env PATH="#{path}" #{cmd}}
-      end
+      cmd = %(env PATH="#{path}" #{cmd}) if path
 
       cmd
     end

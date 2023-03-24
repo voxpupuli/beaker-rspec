@@ -28,8 +28,6 @@ else
     # These make the rubocop experience maybe slightly less terrible
     task.options = ['--display-cop-names', '--display-style-guide', '--extra-details']
     # Use Rubocop's Github Actions formatter if possible
-    if ENV['GITHUB_ACTIONS'] == 'true'
-      task.formatters << 'github'
-    end
+    task.formatters << 'github' if ENV['GITHUB_ACTIONS'] == 'true'
   end
 end
