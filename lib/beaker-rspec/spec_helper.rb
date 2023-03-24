@@ -23,15 +23,15 @@ RSpec.configure do |c|
   }
   #read env vars
   env_vars = {
-    :color       => ENV['BEAKER_color'] || ENV['RS_COLOR'],
-    :nodeset     => ENV['BEAKER_set'] || ENV['RS_SET'],
-    :nodesetdir  => ENV['BEAKER_setdir'] || ENV['RS_SETDIR'],
-    :nodesetfile => ENV['BEAKER_setfile'] || ENV['RS_SETFILE'],
-    :provision   => ENV['BEAKER_provision'] || ENV['RS_PROVISION'],
-    :keyfile     => ENV['BEAKER_keyfile'] || ENV['RS_KEYFILE'],
-    :debug       => ENV['BEAKER_debug'] || ENV['RS_DEBUG'],
-    :destroy     => ENV['BEAKER_destroy'] || ENV['RS_DESTROY'],
-    :optionsfile => ENV['BEAKER_options_file'] || ENV['RS_OPTIONS_FILE'],
+    :color       => ENV['BEAKER_COLOR'] || ENV['BEAKER_color'] || ENV['RS_COLOR'],
+    :nodeset     => ENV['BEAKER_SET'] || ENV['BEAKER_set'] || ENV['RS_SET'],
+    :nodesetdir  => ENV['BEAKER_SETDIR'] || ENV['BEAKER_setdir'] || ENV['RS_SETDIR'],
+    :nodesetfile => ENV['BEAKER_SETFILE'] || ENV['BEAKER_setfile'] || ENV['RS_SETFILE'],
+    :provision   => ENV['BEAKER_PROVISION'] || ENV['BEAKER_provision'] || ENV['RS_PROVISION'],
+    :keyfile     => ENV['BEAKER_KEYFILE'] || ENV['BEAKER_keyfile'] || ENV['RS_KEYFILE'],
+    :debug       => ENV['BEAKER_DEBUG'] || ENV['BEAKER_debug'] || ENV['RS_DEBUG'],
+    :destroy     => ENV['BEAKER_DESTROY'] || ENV['BEAKER_destroy'] || ENV['RS_DESTROY'],
+    :optionsfile => ENV['BEAKER_OPTIONS_FILE'] || ENV['BEAKER_options_file'] || ENV['RS_OPTIONS_FILE'],
    }.delete_if {|_key, value| value.nil?}
    #combine defaults and env_vars to determine overall options
    options = defaults.merge(env_vars)
