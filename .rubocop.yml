@@ -32,8 +32,5 @@ Style/TrailingCommaInArguments:
 Metrics:
   Enabled: false
 
-Style:
-  Enabled: false
-
 Layout:
   Enabled: false
