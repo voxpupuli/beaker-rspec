@@ -20,10 +20,10 @@ All notable changes to this project will be documented in this file.
 **Merged pull requests:**
 
 - Use rubocop config from beaker [\#125](https://github.com/voxpupuli/beaker-rspec/pull/125) ([bastelfreak](https://github.com/bastelfreak))
-- require beaker 4.x [\#124](https://github.com/voxpupuli/beaker-rspec/pull/124) ([bastelfreak](https://github.com/bastelfreak))
-- rubocop: Fix layout cops [\#123](https://github.com/voxpupuli/beaker-rspec/pull/123) ([bastelfreak](https://github.com/bastelfreak))
+- Require beaker 4.x [\#124](https://github.com/voxpupuli/beaker-rspec/pull/124) ([bastelfreak](https://github.com/bastelfreak))
+- Rubocop: Fix Layout cops [\#123](https://github.com/voxpupuli/beaker-rspec/pull/123) ([bastelfreak](https://github.com/bastelfreak))
 - Rubocop: Fix Style cops [\#122](https://github.com/voxpupuli/beaker-rspec/pull/122) ([bastelfreak](https://github.com/bastelfreak))
-- fix multiple rubocop violations [\#119](https://github.com/voxpupuli/beaker-rspec/pull/119) ([bastelfreak](https://github.com/bastelfreak))
+- Fix multiple rubocop violations [\#119](https://github.com/voxpupuli/beaker-rspec/pull/119) ([bastelfreak](https://github.com/bastelfreak))
 - Add Ruby 3.1 to CI matrix [\#113](https://github.com/voxpupuli/beaker-rspec/pull/113) ([bastelfreak](https://github.com/bastelfreak))
 
 ## [7.1.0](https://github.com/voxpupuli/beaker-rspec/tree/7.1.0) (2022-01-14)
