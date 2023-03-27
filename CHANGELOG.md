@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.0](https://github.com/voxpupuli/beaker-rspec/tree/8.0.0) (2023-03-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/7.1.0...8.0.0)
+
+**Breaking changes:**
+
+- Drop Ruby 2.4/2.5/2.6 [\#121](https://github.com/voxpupuli/beaker-rspec/pull/121) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Ruby 3.2 support [\#120](https://github.com/voxpupuli/beaker-rspec/pull/120) ([bastelfreak](https://github.com/bastelfreak))
+- Introduce rubocop [\#118](https://github.com/voxpupuli/beaker-rspec/pull/118) ([bastelfreak](https://github.com/bastelfreak))
+- Support uppercase configuration environment variables [\#117](https://github.com/voxpupuli/beaker-rspec/pull/117) ([ekohl](https://github.com/ekohl))
+- Allow to disable debug output [\#116](https://github.com/voxpupuli/beaker-rspec/pull/116) ([jay7x](https://github.com/jay7x))
+
+**Merged pull requests:**
+
+- Use rubocop config from beaker [\#125](https://github.com/voxpupuli/beaker-rspec/pull/125) ([bastelfreak](https://github.com/bastelfreak))
+- require beaker 4.x [\#124](https://github.com/voxpupuli/beaker-rspec/pull/124) ([bastelfreak](https://github.com/bastelfreak))
+- rubocop: Fix layout cops [\#123](https://github.com/voxpupuli/beaker-rspec/pull/123) ([bastelfreak](https://github.com/bastelfreak))
+- Rubocop: Fix Style cops [\#122](https://github.com/voxpupuli/beaker-rspec/pull/122) ([bastelfreak](https://github.com/bastelfreak))
+- fix multiple rubocop violations [\#119](https://github.com/voxpupuli/beaker-rspec/pull/119) ([bastelfreak](https://github.com/bastelfreak))
+- Add Ruby 3.1 to CI matrix [\#113](https://github.com/voxpupuli/beaker-rspec/pull/113) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [7.1.0](https://github.com/voxpupuli/beaker-rspec/tree/7.1.0) (2022-01-14)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/7.0.0...7.1.0)
