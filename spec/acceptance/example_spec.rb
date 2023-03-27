@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'ignore' do
-
   example 'ignore' do
     hosts.each do |host|
       on host, 'echo hello'
@@ -17,8 +16,8 @@ describe 'ignore' do
   end
 
   example 'access the logger' do
-     logger.debug("hi, i'm a debug message")
-     logger.notify("hi, I'm a notify message")
+    logger.debug("hi, i'm a debug message")
+    logger.notify("hi, I'm a notify message")
   end
 
   example 'access the options' do
@@ -48,7 +47,7 @@ describe 'ignore' do
               'root'
             end
       describe user(usr), node: node do
-         it { is_expected.to exist }
+        it { is_expected.to exist }
       end
     end
   end
@@ -61,7 +60,7 @@ describe 'ignore' do
             'root'
           end
     describe user(usr) do
-       it { is_expected.to exist }
+      it { is_expected.to exist }
     end
   end
 

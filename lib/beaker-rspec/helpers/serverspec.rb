@@ -6,7 +6,6 @@ require 'specinfra/backend/powershell/script_helper'
 set :backend, 'BeakerDispatch'
 
 module Specinfra
-
   # Accessor for current example
   def cur_example
     Specinfra.backend.example
@@ -30,9 +29,7 @@ module Specinfra
   def exec_backend
     @exec_backend ||= Specinfra::Backend::BeakerExec.instance
   end
-
 end
-
 
 # Override existing specinfra configuration to avoid conflicts
 # with beaker's shell, stdout, stderr defines
@@ -55,17 +52,16 @@ module Specinfra
         dockerfile_finalizer
       ].freeze
     end
-
   end
 end
 
 module Specinfra::Helper::Os
-
   @@known_nodes = {}
 
   def os
     working_node_name = get_working_node.to_s
-    @@known_nodes[working_node_name] = property[:os] = detect_os unless @@known_nodes[working_node_name] # haven't seen this yet, better detect the os
+    # haven't seen this yet, better detect the os
+    @@known_nodes[working_node_name] = property[:os] = detect_os unless @@known_nodes[working_node_name]
     @@known_nodes[working_node_name]
   end
 
@@ -75,9 +71,11 @@ module Specinfra::Helper::Os
   # when we know that we have a windows node
   def detect_os
     return Specinfra.configuration.os if Specinfra.configuration.os
+
     backend = Specinfra.backend
     node = get_working_node
-    return {family: 'windows'} if node['platform'].include?('windows')
+    return { family: 'windows' } if node['platform'].include?('windows')
+
     Specinfra::Helper::DetectOs.subclasses.each do |c|
       res = c.detect
       if res
@@ -92,7 +90,6 @@ class Specinfra::CommandFactory
   class << self
     # Force creation of a windows command
     def get_windows_cmd(meth, *args)
-
       action, resource_type, subaction = breakdown(meth)
       method =  action
       method += "_#{subaction}" if subaction
@@ -104,17 +101,19 @@ class Specinfra::CommandFactory
       command_class = version_class.const_get(resource_type.to_camel_case)
 
       command_class = command_class.create
-      raise NotImplementedError, "#{method} is not implemented in #{command_class}" unless command_class.respond_to?(method)
+      unless command_class.respond_to?(method)
+        raise NotImplementedError,
+              "#{method} is not implemented in #{command_class}"
+      end
+
       command_class.send(method, *args)
     end
-
   end
 end
 
 module Specinfra
   # Rewrite the runner to use the appropriate backend based upon platform information
   class Runner
-
     def self.method_missing(meth, *args)
       backend = Specinfra.backend
       node = get_working_node
@@ -133,7 +132,6 @@ module Specinfra
         run(meth, *args)
       end
     end
-
 
     def self.run(meth, *args)
       backend = Specinfra.backend
@@ -179,14 +177,12 @@ module Specinfra::Backend
         stderr: r.stderr,
       }
     end
-
   end
 end
 
 # Used as a container for the two backends, dispatches as windows/nix depending on node platform
 module Specinfra::Backend
   class BeakerDispatch < BeakerBase
-
     def dispatch_method(meth, *args)
       if get_working_node['platform'].include?('windows')
         cygwin_backend.send(meth, *args)
@@ -195,7 +191,7 @@ module Specinfra::Backend
       end
     end
 
-    def run_command(cmd, opts={})
+    def run_command(cmd, opts = {})
       dispatch_method('run_command', cmd, opts)
     end
 
@@ -222,8 +218,8 @@ module Specinfra::Backend
     def run_command(cmd, _opt = {})
       node = get_working_node
       script = create_script(cmd)
-      #when node is not cygwin rm -rf will fail so lets use native del instead
-      #There should be a better way to do this, but for now , this works
+      # when node is not cygwin rm -rf will fail so lets use native del instead
+      # There should be a better way to do this, but for now , this works
       if node.is_cygwin?
         delete_command = 'rm -rf'
         redirection = '< /dev/null'
@@ -233,8 +229,8 @@ module Specinfra::Backend
       end
       on node, "#{delete_command} script.ps1"
       create_remote_file(node, 'script.ps1', script)
-      #When using cmd on a pswindows node redirection should be set to < NUl
-      #when using a cygwing one, /dev/null should be fine
+      # When using cmd on a pswindows node redirection should be set to < NUl
+      # when using a cygwing one, /dev/null should be fine
       ret = ssh_exec!(node, "powershell.exe -File script.ps1 #{redirection}")
 
       if @example
@@ -250,7 +246,6 @@ end
 # Backend for running serverspec commands on non-windows test nodes
 module Specinfra::Backend
   class BeakerExec < BeakerBase
-
     # Run a unix style command using serverspec.  Defaults to running on the 'default_node'
     # test node, otherwise uses the node specified in @example.metadata[:node]
     # @param [String] cmd The serverspec command to executed
@@ -289,6 +284,5 @@ module Specinfra::Backend
         cmd
       end
     end
-
   end
 end

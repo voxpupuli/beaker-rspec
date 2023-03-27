@@ -17,11 +17,11 @@ RSpec.configure do |c|
   # Define persistant default node
   c.add_setting :default_node, default: nil
 
-  #default option values
+  # default option values
   defaults = {
     nodeset: 'default',
   }
-  #read env vars
+  # read env vars
   env_vars = {
     color: ENV['BEAKER_COLOR'] || ENV['BEAKER_color'] || ENV.fetch('RS_COLOR', nil),
     nodeset: ENV['BEAKER_SET'] || ENV['BEAKER_set'] || ENV.fetch('RS_SET', nil),
@@ -32,9 +32,9 @@ RSpec.configure do |c|
     debug: ENV['BEAKER_DEBUG'] || ENV['BEAKER_debug'] || ENV.fetch('RS_DEBUG', nil),
     destroy: ENV['BEAKER_DESTROY'] || ENV['BEAKER_destroy'] || ENV.fetch('RS_DESTROY', nil),
     optionsfile: ENV['BEAKER_OPTIONS_FILE'] || ENV['BEAKER_options_file'] || ENV.fetch('RS_OPTIONS_FILE', nil),
-   }.delete_if {|_key, value| value.nil?}
-   #combine defaults and env_vars to determine overall options
-   options = defaults.merge(env_vars)
+  }.delete_if { |_key, value| value.nil? }
+  # combine defaults and env_vars to determine overall options
+  options = defaults.merge(env_vars)
 
   # process options to construct beaker command string
   nodesetdir = options[:nodesetdir] || File.join('spec', 'acceptance', 'nodesets')
@@ -43,7 +43,7 @@ RSpec.configure do |c|
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
   debug = options[:debug] && options[:debug] != 'no' ? ['--log-level', 'debug'] : nil
   color = options[:color] == 'no' ? ['--no-color'] : nil
-  options_file = options[:optionsfile] ? ['--options-file',options[:optionsfile]] : nil
+  options_file = options[:optionsfile] ? ['--options-file', options[:optionsfile]] : nil
 
   # Configure all nodes in nodeset
   c.setup([fresh_nodes, '--hosts', nodesetfile, keyfile, debug, color, options_file].flatten.compact)

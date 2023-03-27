@@ -84,6 +84,5 @@ module BeakerRSpec
     def cleanup
       @network_manager.cleanup
     end
-
   end
 end

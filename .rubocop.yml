@@ -31,6 +31,3 @@ Style/TrailingCommaInArguments:
 
 Metrics:
   Enabled: false
-
-Layout:
-  Enabled: false
