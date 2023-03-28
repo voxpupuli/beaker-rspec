@@ -170,7 +170,7 @@ describe 'mysql::server::account_security class' do
 
   it 'should run without errors' do
     result = apply_manifest(manifest, :catch_failures => true)
-    expect(@result.exit_code).to eq 2
+    expect(result.exit_code).to eq 2
   end
 
   it 'should delete accounts' do
@@ -185,7 +185,7 @@ describe 'mysql::server::account_security class' do
 
   it 'should run a second time without changes' do
     result = apply_manifest(manifest, :catch_failures => true)
-    expect(@result.exit_code).to eq 0
+    expect(result.exit_code).to eq 0
   end
 
   describe package('mysql-server') do
