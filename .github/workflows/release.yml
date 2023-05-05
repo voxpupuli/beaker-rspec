@@ -17,7 +17,7 @@ jobs:
           ruby-version: '3.2'
           bundler: 'none'
       - name: Build gem
-        run: gem build *.gemspec
+        run: gem build --strict --verbose *.gemspec
       - name: Publish gem to rubygems.org
         run: gem push *.gem
         env:
