@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.0.1](https://github.com/voxpupuli/beaker-rspec/tree/8.0.1) (2023-05-05)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.0.0...8.0.1)
+
+**Merged pull requests:**
+
+- switch to voxpupuli-rubocop [\#128](https://github.com/voxpupuli/beaker-rspec/pull/128) ([bastelfreak](https://github.com/bastelfreak))
+- fix wrong example [\#127](https://github.com/voxpupuli/beaker-rspec/pull/127) ([rwaffen](https://github.com/rwaffen))
+
 ## [8.0.0](https://github.com/voxpupuli/beaker-rspec/tree/8.0.0) (2023-03-27)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/7.1.0...8.0.0)
