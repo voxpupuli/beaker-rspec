@@ -24,7 +24,8 @@ when 'vmpooler'
 end
 
 group :release do
-  gem 'github_changelog_generator', '>= 1.16.4', require: false if RUBY_VERSION >= '2.5'
+  gem 'faraday-retry', require: false
+  gem 'github_changelog_generator', require: false
 end
 
 gemspec

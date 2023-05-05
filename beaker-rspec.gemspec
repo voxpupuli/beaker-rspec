@@ -21,13 +21,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fakefs', '>= 0.6', '< 2'
   s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'rake', '~> 13.0'
-
-  # rubocop
-  s.add_development_dependency 'rubocop', '~> 1.48.1'
-  s.add_development_dependency 'rubocop-minitest'
-  s.add_development_dependency 'rubocop-performance'
-  s.add_development_dependency 'rubocop-rake'
-  s.add_development_dependency 'rubocop-rspec'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 1.3'
 
   # Documentation dependencies
   s.add_development_dependency 'thin'
