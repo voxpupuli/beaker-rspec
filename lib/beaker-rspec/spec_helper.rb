@@ -32,7 +32,7 @@ RSpec.configure do |c|
     debug: ENV['BEAKER_DEBUG'] || ENV['BEAKER_debug'] || ENV.fetch('RS_DEBUG', nil),
     destroy: ENV['BEAKER_DESTROY'] || ENV['BEAKER_destroy'] || ENV.fetch('RS_DESTROY', nil),
     optionsfile: ENV['BEAKER_OPTIONS_FILE'] || ENV['BEAKER_options_file'] || ENV.fetch('RS_OPTIONS_FILE', nil),
-  }.delete_if { |_key, value| value.nil? }
+  }.compact
   # combine defaults and env_vars to determine overall options
   options = defaults.merge(env_vars)
 
