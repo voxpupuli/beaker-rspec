@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
 
   # Testing dependencies
-  s.add_development_dependency 'fakefs', '>= 0.6', '< 2'
+  s.add_development_dependency 'fakefs', '>= 0.6', '< 3'
   s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'rake', '~> 13.0'
   s.add_development_dependency 'voxpupuli-rubocop', '~> 1.3'
