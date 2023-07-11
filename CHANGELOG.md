@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.1.0](https://github.com/voxpupuli/beaker-rspec/tree/8.1.0) (2023-07-11)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.0.1...8.1.0)
+
+**Implemented enhancements:**
+
+- fakefs: Allow 2.x [\#131](https://github.com/voxpupuli/beaker-rspec/pull/131) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- Drop docs dev dependencies & CI: Build gems with strictness and verbosity [\#130](https://github.com/voxpupuli/beaker-rspec/pull/130) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [8.0.1](https://github.com/voxpupuli/beaker-rspec/tree/8.0.1) (2023-05-05)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.0.0...8.0.1)
