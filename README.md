@@ -48,7 +48,7 @@ cd .vagrant/beaker_vagrant_files/default.yml ; vagrant destroy --force
 ### Supported ENV variables
 
 * `BEAKER_color`: set to `no` to disable color output
-* `BEAKER_debug`: set to any value to enable beaker debug logging
+* `BEAKER_debug`: set to any value other than `no` to enable beaker debug logging
 * `BEAKER_destroy`: set to `no` to keep the VMs after the test run. Set to `onpass` to keep the VMs around only after a test failure.
 * `BEAKER_keyfile`: specify alternate SSH key to access the test VMs
 * `BEAKER_options_file`: set to the file path of the options file to be used as the default options for beaker.  Equivalent to the `--options-file` parameter.
