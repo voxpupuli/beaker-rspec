@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.2.0](https://github.com/voxpupuli/beaker-rspec/tree/8.2.0) (2024-05-28)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.1.0...8.2.0)
+
+**Implemented enhancements:**
+
+- beaker: Allow 6.x [\#137](https://github.com/voxpupuli/beaker-rspec/pull/137) ([bastelfreak](https://github.com/bastelfreak))
+- Add Ruby 3.3 to CI [\#135](https://github.com/voxpupuli/beaker-rspec/pull/135) ([bastelfreak](https://github.com/bastelfreak))
+
+**Fixed bugs:**
+
+- Correct BEAKER\_debug text that it respects no [\#134](https://github.com/voxpupuli/beaker-rspec/pull/134) ([ekohl](https://github.com/ekohl))
+
+**Merged pull requests:**
+
+- voxpupuli-rubocop: Require 2.7.0 [\#136](https://github.com/voxpupuli/beaker-rspec/pull/136) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [8.1.0](https://github.com/voxpupuli/beaker-rspec/tree/8.1.0) (2023-07-11)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.0.1...8.1.0)
