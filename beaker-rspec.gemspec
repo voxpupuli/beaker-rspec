@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'voxpupuli-rubocop', '~> 1.3'
 
   # Run time dependencies
-  s.add_runtime_dependency 'beaker', '>= 4.0', '< 6'
+  s.add_runtime_dependency 'beaker', '>= 4.0', '< 7'
   s.add_runtime_dependency 'rspec', '~> 3.0'
   s.add_runtime_dependency 'serverspec', '~> 2'
   s.add_runtime_dependency 'specinfra', '~> 2'
