@@ -39,10 +39,10 @@ RSpec.configure do |c|
   # process options to construct beaker command string
   nodesetdir = options[:nodesetdir] || File.join('spec', 'acceptance', 'nodesets')
   nodesetfile = options[:nodesetfile] || File.join(nodesetdir, "#{options[:nodeset]}.yml")
-  fresh_nodes = options[:provision] == 'no' ? '--no-provision' : nil
+  fresh_nodes = (options[:provision] == 'no') ? '--no-provision' : nil
   keyfile = options[:keyfile] ? ['--keyfile', options[:keyfile]] : nil
-  debug = options[:debug] && options[:debug] != 'no' ? ['--log-level', 'debug'] : nil
-  color = options[:color] == 'no' ? ['--no-color'] : nil
+  debug = (options[:debug] && options[:debug] != 'no') ? ['--log-level', 'debug'] : nil
+  color = (options[:color] == 'no') ? ['--no-color'] : nil
   options_file = options[:optionsfile] ? ['--options-file', options[:optionsfile]] : nil
 
   # Configure all nodes in nodeset
