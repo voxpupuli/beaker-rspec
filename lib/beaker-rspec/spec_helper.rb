@@ -32,6 +32,8 @@ RSpec.configure do |c|
     debug: ENV['BEAKER_DEBUG'] || ENV['BEAKER_debug'] || ENV.fetch('RS_DEBUG', nil),
     destroy: ENV['BEAKER_DESTROY'] || ENV['BEAKER_destroy'] || ENV.fetch('RS_DESTROY', nil),
     optionsfile: ENV['BEAKER_OPTIONS_FILE'] || ENV['BEAKER_options_file'] || ENV.fetch('RS_OPTIONS_FILE', nil),
+    vagrant_memsize: ENV.fetch('BEAKER_VAGRANT_MEMSIZE', nil),
+    vagrant_cpus: ENV.fetch('BEAKER_VAGRANT_CPUS', nil),
   }.compact
   # combine defaults and env_vars to determine overall options
   options = defaults.merge(env_vars)
