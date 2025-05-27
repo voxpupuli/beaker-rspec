@@ -107,18 +107,6 @@ module Specinfra
         run(meth, *args)
       end
     end
-
-    def self.run(meth, *args)
-      backend = Specinfra.backend
-      cmd = Specinfra.command.get(meth, *args)
-      backend = Specinfra.backend
-      ret = backend.run_command(cmd)
-      if meth.to_s.start_with?('check')
-        ret.success?
-      else
-        ret
-      end
-    end
   end
 end
 
