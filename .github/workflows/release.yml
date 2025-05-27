@@ -7,14 +7,14 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     if: github.repository_owner == 'voxpupuli'
     steps:
       - uses: actions/checkout@v4
-      - name: Install Ruby 3.3
+      - name: Install Ruby 3.4
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'
+          ruby-version: '3.4'
           bundler: 'none'
       - name: Build gem
         run: gem build --strict --verbose *.gemspec

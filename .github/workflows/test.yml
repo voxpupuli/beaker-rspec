@@ -1,3 +1,4 @@
+---
 name: Test
 
 on:
@@ -11,28 +12,29 @@ env:
   BEAKER_HYPERVISOR: docker
 
 jobs:
-  rubocop:
-    runs-on: ubuntu-latest
+  rubocop_and_matrix:
+    runs-on: ubuntu-24.04
+    outputs:
+      ruby: ${{ steps.ruby.outputs.versions }}
     steps:
       - uses: actions/checkout@v4
       - name: Install Ruby ${{ matrix.ruby }}
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: "3.4"
           bundler-cache: true
       - name: Run Rubocop
         run: bundle exec rake rubocop
+      - id: ruby
+        uses: voxpupuli/ruby-version@v1
+
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    needs: rubocop_and_matrix
     strategy:
       fail-fast: false
       matrix:
-        ruby:
-          - "2.7"
-          - "3.0"
-          - "3.1"
-          - "3.2"
-          - "3.3"
+        ruby: ${{ fromJSON(needs.rubocop_and_matrix.outputs.ruby) }}
     name: Ruby ${{ matrix.ruby }}
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +50,7 @@ jobs:
 
   tests:
     needs:
-      - rubocop
+      - rubocop_and_matrix
       - build
     runs-on: ubuntu-latest
     name: Test suite
