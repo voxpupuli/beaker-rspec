@@ -84,24 +84,6 @@ Style/Documentation:
     - 'lib/beaker-rspec.rb'
     - 'lib/beaker-rspec/helpers/serverspec.rb'
 
-# Offense count: 10
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - '**/*.arb'
-    - 'Gemfile'
-    - 'beaker-rspec.gemspec'
-    - 'lib/beaker-rspec.rb'
-    - 'lib/beaker-rspec/beaker_shim.rb'
-    - 'lib/beaker-rspec/helpers/serverspec.rb'
-    - 'lib/beaker-rspec/rake_task.rb'
-    - 'lib/beaker-rspec/spec_helper.rb'
-    - 'lib/beaker-rspec/version.rb'
-    - 'spec/acceptance/example_spec.rb'
-    - 'spec/spec_helper.rb'
-
 # Offense count: 1
 Style/MissingRespondToMissing:
   Exclude:
