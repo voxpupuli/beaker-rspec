@@ -86,31 +86,6 @@ module Specinfra::Helper::Os
   end
 end
 
-class Specinfra::CommandFactory
-  class << self
-    # Force creation of a windows command
-    def get_windows_cmd(meth, *args)
-      action, resource_type, subaction = breakdown(meth)
-      method =  action
-      method += "_#{subaction}" if subaction
-
-      common_class = Specinfra::Command
-      base_class = common_class.const_get(:Base)
-      os_class = common_class.const_get(:Windows)
-      version_class = os_class.const_get(:Base)
-      command_class = version_class.const_get(resource_type.to_camel_case)
-
-      command_class = command_class.create
-      unless command_class.respond_to?(method)
-        raise NotImplementedError,
-              "#{method} is not implemented in #{command_class}"
-      end
-
-      command_class.send(method, *args)
-    end
-  end
-end
-
 module Specinfra
   # Rewrite the runner to use the appropriate backend based upon platform information
   class Runner
