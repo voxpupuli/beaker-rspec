@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.3.0](https://github.com/voxpupuli/beaker-rspec/tree/8.3.0) (2025-05-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.2.0...8.3.0)
+
+**Implemented enhancements:**
+
+- Use the backend variable inside the loop [\#145](https://github.com/voxpupuli/beaker-rspec/pull/145) ([ekohl](https://github.com/ekohl))
+- Remove redundant Specinfra::Runner.run definition [\#144](https://github.com/voxpupuli/beaker-rspec/pull/144) ([ekohl](https://github.com/ekohl))
+- Remove unused get\_windows\_cmd method [\#143](https://github.com/voxpupuli/beaker-rspec/pull/143) ([ekohl](https://github.com/ekohl))
+- Add Ruby 3.4 to CI / generate matrix automatically [\#142](https://github.com/voxpupuli/beaker-rspec/pull/142) ([bastelfreak](https://github.com/bastelfreak))
+- Vagrant: Add options to configure memsize/cpu cores [\#139](https://github.com/voxpupuli/beaker-rspec/pull/139) ([bastelfreak](https://github.com/bastelfreak))
+
+**Merged pull requests:**
+
+- fakefs: Allow 3.x [\#146](https://github.com/voxpupuli/beaker-rspec/pull/146) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [8.2.0](https://github.com/voxpupuli/beaker-rspec/tree/8.2.0) (2024-05-28)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.1.0...8.2.0)
