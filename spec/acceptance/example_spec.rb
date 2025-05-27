@@ -21,7 +21,7 @@ describe 'ignore' do
   end
 
   example 'access the options' do
-    expect(options).to be_kind_of(Hash)
+    expect(options).to be_a(Hash)
   end
 
   example 'create a beaker dsl::step' do
