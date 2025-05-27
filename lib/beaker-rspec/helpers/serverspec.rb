@@ -79,7 +79,7 @@ module Specinfra::Helper::Os
     Specinfra::Helper::DetectOs.subclasses.each do |c|
       res = c.detect
       if res
-        res[:arch] ||= Specinfra.backend.run_command('uname -m').stdout.strip
+        res[:arch] ||= backend.run_command('uname -m').stdout.strip
         return res
       end
     end
