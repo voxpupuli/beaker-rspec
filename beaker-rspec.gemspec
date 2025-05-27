@@ -21,11 +21,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fakefs', '>= 0.6', '< 3'
   s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'rake', '~> 13.0'
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 2.7.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 3.1.0'
 
   # Run time dependencies
-  s.add_runtime_dependency 'beaker', '>= 4.0', '< 7'
-  s.add_runtime_dependency 'rspec', '~> 3.0'
-  s.add_runtime_dependency 'serverspec', '~> 2'
-  s.add_runtime_dependency 'specinfra', '~> 2'
+  s.add_dependency 'beaker', '>= 4.0', '< 7'
+  s.add_dependency 'rspec', '~> 3.0'
+  s.add_dependency 'serverspec', '~> 2'
+  s.add_dependency 'specinfra', '~> 2'
 end
