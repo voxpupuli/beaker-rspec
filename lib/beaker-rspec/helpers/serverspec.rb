@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'serverspec'
 require 'specinfra'
 require 'specinfra/backend/powershell/script_helper'

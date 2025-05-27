@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'beaker-rspec/beaker_shim'
 require 'beaker-rspec/helpers/serverspec'
 include BeakerRSpec::BeakerShim
