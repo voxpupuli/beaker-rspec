@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = 'RSpec bindings for beaker, see https://github.com/voxpupuli/beaker'
   s.license     = 'Apache-2.0'
 
-  s.required_ruby_version = '>= 2.7.0', '<4.0.0'
+  s.required_ruby_version = '>= 3.2.0', '<4.0.0'
 
   s.files         = `git ls-files`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
@@ -23,10 +23,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'fakefs', '>= 0.6', '< 4'
   s.add_development_dependency 'minitest', '~> 5.4'
   s.add_development_dependency 'rake', '~> 13.0'
-  s.add_development_dependency 'voxpupuli-rubocop', '~> 3.1.0'
+  s.add_development_dependency 'voxpupuli-rubocop', '~> 4.1.0'
 
   # Run time dependencies
-  s.add_dependency 'beaker', '>= 4.0', '< 7'
+  s.add_dependency 'beaker', '>= 4.0', '< 8'
   s.add_dependency 'rspec', '~> 3.0'
   s.add_dependency 'serverspec', '~> 2'
   s.add_dependency 'specinfra', '~> 2'
