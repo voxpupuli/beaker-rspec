@@ -91,22 +91,22 @@ end
 module Specinfra
   # Rewrite the runner to use the appropriate backend based upon platform information
   class Runner
-    def self.method_missing(meth, *args)
+    def self.method_missing(meth, *)
       backend = Specinfra.backend
       node = get_working_node
       if !node['platform'].include?('windows')
         processor = Specinfra::Processor
         if processor.respond_to?(meth)
-          processor.send(meth, *args)
+          processor.send(meth, *)
         elsif backend.respond_to?(meth)
-          backend.send(meth, *args)
+          backend.send(meth, *)
         else
-          run(meth, *args)
+          run(meth, *)
         end
       elsif backend.respond_to?(meth)
-        backend.send(meth, *args)
+        backend.send(meth, *)
       else
-        run(meth, *args)
+        run(meth, *)
       end
     end
   end
@@ -148,11 +148,11 @@ end
 # Used as a container for the two backends, dispatches as windows/nix depending on node platform
 module Specinfra::Backend
   class BeakerDispatch < BeakerBase
-    def dispatch_method(meth, *args)
+    def dispatch_method(meth, *)
       if get_working_node['platform'].include?('windows')
-        cygwin_backend.send(meth, *args)
+        cygwin_backend.send(meth, *)
       else
-        exec_backend.send(meth, *args)
+        exec_backend.send(meth, *)
       end
     end
 
