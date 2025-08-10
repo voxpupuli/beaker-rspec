@@ -7,8 +7,10 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 env:
-  BUNDLE_WITHOUT: release
   BEAKER_HYPERVISOR: docker
 
 jobs:
