@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = 'RSpec bindings for beaker, see https://github.com/voxpupuli/beaker'
   s.license     = 'Apache-2.0'
 
-  s.required_ruby_version = '>= 3.2.0', '<4.0.0'
+  s.required_ruby_version = '>= 3.2.0', '< 5.0.0'
 
   s.files         = `git ls-files`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
