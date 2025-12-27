@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [9.1.0](https://github.com/voxpupuli/beaker-rspec/tree/9.1.0) (2025-12-27)
+
+[Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/9.0.0...9.1.0)
+
+**Implemented enhancements:**
+
+- Add Ruby 4.0 support [\#161](https://github.com/voxpupuli/beaker-rspec/pull/161) ([bastelfreak](https://github.com/bastelfreak))
+- minitest: allow 6.x [\#160](https://github.com/voxpupuli/beaker-rspec/pull/160) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [9.0.0](https://github.com/voxpupuli/beaker-rspec/tree/9.0.0) (2025-08-07)
 
 [Full Changelog](https://github.com/voxpupuli/beaker-rspec/compare/8.3.0...9.0.0)
